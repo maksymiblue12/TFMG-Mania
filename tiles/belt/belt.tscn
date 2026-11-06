@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://48hv7ohq0f80"]
+
+[ext_resource type="Script" uid="uid://bl8h8i7ohgrtc" path="res://tiles/belt/belt.gd" id="1_susb0"]
+[ext_resource type="Texture2D" uid="uid://dqf8wx5gu611j" path="res://assets/pixil-frame-0.png" id="2_rfspg"]
+
+[node name="Belt" type="Node2D" unique_id=944355608]
+script = ExtResource("1_susb0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1045954290]
+texture_filter = 1
+position = Vector2(30, 30)
+texture = ExtResource("2_rfspg")

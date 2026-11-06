@@ -42,3 +42,9 @@ func get_item_to_move():
 	if (prev):
 		return prev.get_item_to_move()
 	return null
+
+func recalculate_progress(path_length):
+	if (!next):
+		progress=path_length-dist_to_next
+	else:
+		progress=next.progress-dist_to_next

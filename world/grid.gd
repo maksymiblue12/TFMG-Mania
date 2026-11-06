@@ -1,7 +1,7 @@
 class_name Grid
 extends Node2D
 
-var SQUARE=preload("res://square.tscn")
+var SQUARE=preload("res://world/square.tscn")
 
 var grid_id=1
 var grids:Dictionary={}

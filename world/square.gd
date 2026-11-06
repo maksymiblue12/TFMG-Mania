@@ -9,7 +9,7 @@ var y_index:int
 var grid_id:int
 
 var TILE_TYPES={
-	"belt":preload("res://belt.tscn")
+	"belt":preload("res://tiles/belt/belt.tscn")
 }
 
 var stylebox:StyleBoxFlat

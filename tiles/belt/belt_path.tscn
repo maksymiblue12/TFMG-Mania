@@ -1,11 +1,8 @@
 [gd_scene format=3 uid="uid://baj012ptmlrgu"]
 
-[ext_resource type="Script" uid="uid://qjalcicx8n4v" path="res://belt_path.gd" id="1_igvwq"]
-
-[sub_resource type="Curve2D" id="Curve2D_wi6jo"]
+[ext_resource type="Script" uid="uid://qjalcicx8n4v" path="res://tiles/belt/belt_path.gd" id="1_igvwq"]
 
 [node name="BeltPath" type="Node2D" unique_id=1294493457]
 script = ExtResource("1_igvwq")
 
 [node name="Path2D" type="Path2D" parent="." unique_id=604122314]
-curve = SubResource("Curve2D_wi6jo")
