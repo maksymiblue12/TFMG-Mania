@@ -39,6 +39,14 @@ func get_neighbours():
 		grid.get_square_or_null(grid_id,x_index,y_index+1),
 	]
 
+func get_direction_neighbours():
+	return {
+		GameConstants.DIRECTION.LEFT:grid.get_square_or_null(grid_id,x_index-1,y_index),
+		GameConstants.DIRECTION.UP:grid.get_square_or_null(grid_id,x_index,y_index-1),
+		GameConstants.DIRECTION.RIGHT:grid.get_square_or_null(grid_id,x_index+1,y_index),
+		GameConstants.DIRECTION.DOWN:grid.get_square_or_null(grid_id,x_index,y_index+1),
+	}
+
 func _input(event: InputEvent) -> void:
 	if (event is InputEventMouseMotion):
 		if (panel.get_rect().has_point(get_local_mouse_position()) and !has_mouse):

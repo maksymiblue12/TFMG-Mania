@@ -6,6 +6,7 @@ extends Node2D
 var items_head:BeltItem
 var items_tail:BeltItem
 var items_length:int
+var length:int=0
 
 var BELT_ITEM=preload("res://belt_item.tscn")
 
@@ -13,6 +14,7 @@ func _ready() -> void:
 	pass
 
 func add_belt(b):
+	length+=1
 	path.curve.add_point(b.global_position)
 	if (items_head):
 		items_head.update_dist_to_next(path.curve.get_baked_length())
