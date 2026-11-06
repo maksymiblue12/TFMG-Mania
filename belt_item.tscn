@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cv4q55vx2spaw"]
+
+[ext_resource type="Script" uid="uid://deju44h6eonwt" path="res://belt_item.gd" id="1_yeg27"]
+
+[node name="BeltItem" type="PathFollow2D" unique_id=36359706]
+z_index = 1
+rotates = false
+loop = false
+script = ExtResource("1_yeg27")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=389182085]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)

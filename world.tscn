@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bqykhjxijg8fg"]
+
+[ext_resource type="PackedScene" uid="uid://baj012ptmlrgu" path="res://belt_path.tscn" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://vxtutjs55nhh" path="res://grid.gd" id="2_fj7yv"]
+
+[node name="world" type="Node2D" unique_id=1034354916]
+
+[node name="BeltPath" parent="." unique_id=1294493457 instance=ExtResource("1_f3sb7")]
+visible = false
+position = Vector2(212, 119)
+
+[node name="grid" type="Node2D" parent="." unique_id=1319886767]
+script = ExtResource("2_fj7yv")

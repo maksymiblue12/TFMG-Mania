@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://w8prlivc3evw"]
+
+[ext_resource type="Script" uid="uid://cr4yykkluva0a" path="res://square.gd" id="1_2eeqm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pijsi"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pijsi"]
+size = Vector2(64, 64)
+
+[node name="square" type="Node2D" unique_id=1941574083]
+script = ExtResource("1_2eeqm")
+
+[node name="Panel" type="Panel" parent="." unique_id=1095886861]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pijsi")
+
+[node name="MouseDetector" type="Area2D" parent="." unique_id=1743971215]
+position = Vector2(32, 32)
+
+[node name="CollisionShape" type="CollisionShape2D" parent="MouseDetector" unique_id=898821450]
+shape = SubResource("RectangleShape2D_pijsi")
