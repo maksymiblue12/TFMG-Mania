@@ -48,3 +48,13 @@ func recalculate_progress(path_length):
 		progress=path_length-dist_to_next
 	else:
 		progress=next.progress-dist_to_next
+
+func get_copy(nxt):
+	var b=load("res://tiles/belt/belt_item.tscn").instantiate()
+	b.item_type=item_type
+	b.dist_to_next=dist_to_next
+	b.progress=progress
+	b.next=nxt
+	if (nxt):
+		nxt.prev=b
+	return b
