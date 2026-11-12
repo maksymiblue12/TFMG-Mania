@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://baj012ptmlrgu"]
 
-[ext_resource type="Script" uid="uid://qjalcicx8n4v" path="res://tiles/belt/belt_path.gd" id="1_igvwq"]
+[ext_resource type="Script" uid="uid://qjalcicx8n4v" path="res://systems/belt_path/belt_path.gd" id="1_igvwq"]
 
 [node name="BeltPath" type="Node2D" unique_id=1294493457]
 script = ExtResource("1_igvwq")

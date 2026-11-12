@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bqykhjxijg8fg"]
 
-[ext_resource type="PackedScene" uid="uid://baj012ptmlrgu" path="res://tiles/belt/belt_path.tscn" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://baj012ptmlrgu" path="res://systems/belt_path/belt_path.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://vxtutjs55nhh" path="res://world/grid.gd" id="2_fj7yv"]
 
 [node name="world" type="Node2D" unique_id=1034354916]

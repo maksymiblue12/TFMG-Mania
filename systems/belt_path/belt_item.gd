@@ -1,5 +1,5 @@
 class_name BeltItem
-extends PathFollow2D
+extends Node2D
 
 var item_type
 var distance_to_next:float

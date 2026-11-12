@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://cv4q55vx2spaw"]
 
-[ext_resource type="Script" uid="uid://deju44h6eonwt" path="res://belt_item.gd" id="1_yeg27"]
+[ext_resource type="Script" uid="uid://deju44h6eonwt" path="res://systems/belt_path/belt_item.gd" id="1_ej1mx"]
 
-[node name="BeltItem" type="PathFollow2D" unique_id=36359706]
+[node name="BeltItem" type="Node2D" unique_id=21111882]
 z_index = 1
-rotates = false
-loop = false
-script = ExtResource("1_yeg27")
+script = ExtResource("1_ej1mx")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=389182085]
 anchors_preset = 8

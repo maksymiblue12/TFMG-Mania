@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cx4bfitf5ir0l"]
+
+[ext_resource type="Script" uid="uid://dke8bwkc61cv" path="res://systems/belt_path/belt_manager.gd" id="1_2py58"]
+
+[node name="belt_manager" type="Node2D" unique_id=573668611]
+script = ExtResource("1_2py58")
