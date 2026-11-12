@@ -3,86 +3,14 @@ extends Node2D
 
 @onready var path:Path2D=$Path2D
 
-var items_head:BeltItem
-var items_tail:BeltItem
-var items_length:int
-var length:int=0
-var wants_to_push:bool=false
+var segments:Array[Belt]=[]
 
-var BELT_ITEM=preload("res://tiles/belt/belt_item.tscn")
+var distance_to_first:float
+var items:Array[BeltItem]=[]
+
+var length:float=0
+var speed:float=100.0
+var item_spacing:float=30
 
 func _ready() -> void:
 	path.curve=Curve2D.new()
-
-func add_belt(b):
-	length+=1
-	path.curve.add_point(b.get_center())
-	path.curve.add_point(b.get_side())
-	if (items_head):
-		items_head.update_dist_to_next(path.curve.get_baked_length())
-
-func remove():
-	queue_free()
-
-func merge(other:BeltPath):
-	#return
-	for p in range(other.path.curve.point_count):
-		path.curve.add_point(other.path.curve.get_point_position(p))
-	length+=other.length
-
-	var it=other.items_head
-	var next=null
-	var head=null
-	while (it):
-		var c=it.get_copy(next)
-		path.add_child(c)
-		if (!head): head=c
-		next=c
-		c.recalculate_progress(path.curve.get_baked_length())
-		it=it.prev
-	var tail=next
-
-	if (tail):
-		tail.prev=items_head
-	if (items_head):
-		items_head.next=tail
-		items_head.update_dist_to_next(path.curve.get_baked_length())
-	items_head=head
-	if (!items_tail): items_tail=tail
-
-	other.remove()
-
-	print(other.path.get_children())
-
-func _unhandled_input(event: InputEvent) -> void:
-	if (event.is_action_pressed("ui_accept")):
-		try_add_item("aaa")
-
-func _physics_process(delta: float) -> void:
-	if (!items_head): return
-	var it=items_head.get_item_to_move()
-	if (it):
-		it.move(delta)
-	wants_to_push=items_head.dist_to_next==0
-
-
-func add_item(item_type):
-	var item:BeltItem=BELT_ITEM.instantiate()
-	path.add_child(item)
-	item.next=items_tail
-	if (items_tail):
-		items_tail.prev=item
-	items_tail=item
-	item.create(item_type,path.curve.get_baked_length())
-	if (items_length==0):
-		items_head=item
-	items_length+=1
-
-func can_add_item():
-	return items_tail.progress>items_tail.dist_between_items if items_tail else true
-
-func try_add_item(item_type):
-	if (can_add_item()):
-		add_item(item_type)
-		return true
-	return false

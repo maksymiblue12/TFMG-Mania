@@ -1,60 +1,8 @@
 class_name BeltItem
 extends PathFollow2D
 
-var next:BeltItem
-var prev:BeltItem
-var dist_to_next:float=0
 var item_type
+var distance_to_next:float
 
-var dist_between_items:int=30
-var speed=100
-
-func create(_item_type,path_length) -> void:
+func create(_item_type) -> void:
 	item_type=_item_type
-	update_dist_to_next(path_length)
-
-func update_dist_to_next(path_length):
-	if (!next):
-		dist_to_next=path_length-progress
-	else:
-		dist_to_next=next.progress-progress
-
-func move(delta:float):
-	var d=min(speed*delta,get_dist_to_next())
-	progress+=d
-	dist_to_next-=d
-	if (prev):
-		prev.move_dist(d)
-
-func move_dist(d:float):
-	progress+=d
-	if (prev):
-		prev.move_dist(d)
-
-func get_dist_to_next():
-	if (!next):
-		return dist_to_next
-	return dist_to_next-dist_between_items
-
-func get_item_to_move():
-	if (get_dist_to_next()>0):
-		return self
-	if (prev):
-		return prev.get_item_to_move()
-	return null
-
-func recalculate_progress(path_length):
-	if (!next):
-		progress=path_length-dist_to_next
-	else:
-		progress=next.progress-dist_to_next
-
-func get_copy(nxt):
-	var b=load("res://tiles/belt/belt_item.tscn").instantiate()
-	b.item_type=item_type
-	b.dist_to_next=dist_to_next
-	b.progress=progress
-	b.next=nxt
-	if (nxt):
-		nxt.prev=b
-	return b
