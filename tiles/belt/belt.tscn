@@ -1,12 +1,18 @@
 [gd_scene format=3 uid="uid://48hv7ohq0f80"]
 
 [ext_resource type="Script" uid="uid://bl8h8i7ohgrtc" path="res://tiles/belt/belt.gd" id="1_susb0"]
+[ext_resource type="Shader" uid="uid://drapj8p1phy68" path="res://assets/belt_animation.gdshader" id="2_htjah"]
 [ext_resource type="Texture2D" uid="uid://dqf8wx5gu611j" path="res://assets/pixil-frame-0.png" id="2_rfspg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tcf2h"]
+shader = ExtResource("2_htjah")
+shader_parameter/speed = 1.60000002384192
 
 [node name="Belt" type="Node2D" unique_id=944355608]
 script = ExtResource("1_susb0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1045954290]
 texture_filter = 1
+material = SubResource("ShaderMaterial_tcf2h")
 position = Vector2(30, 30)
 texture = ExtResource("2_rfspg")

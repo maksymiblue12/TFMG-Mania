@@ -48,25 +48,22 @@ func get_direction_neighbours():
 	}
 
 func _input(event: InputEvent) -> void:
-	if (event is InputEventMouseMotion):
-		if (panel.get_rect().has_point(get_local_mouse_position()) and !has_mouse):
-			_on_mouse_entered()
-		elif (!panel.get_rect().has_point(get_local_mouse_position()) and has_mouse):
-			_on_mouse_exited()
-	elif (event is InputEventMouseButton):
+	if (event is InputEventMouseButton):
 		if (has_mouse and !has_tile):
-			set_tile_type("belt")
+			set_tile()
 
-func set_tile_type(type):
+func set_tile():
 	has_tile=true
-	tile=TILE_TYPES[type].instantiate()
+	tile=GameState.get_placable_tile()
 	tile.square=self
 	add_child(tile)
 
 func _on_mouse_entered() -> void:
+	if (has_mouse):return
 	has_mouse=true
 	stylebox.bg_color=Color(0.0, 0.033, 1.0, 0.25)
 
 func _on_mouse_exited() -> void:
+	if (!has_mouse):return
 	has_mouse=false
 	stylebox.bg_color=Color(0.0, 0.0, 0.0, 0.0)

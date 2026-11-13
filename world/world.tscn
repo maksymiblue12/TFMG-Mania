@@ -1,13 +1,17 @@
 [gd_scene format=3 uid="uid://bqykhjxijg8fg"]
 
-[ext_resource type="PackedScene" uid="uid://baj012ptmlrgu" path="res://systems/belt_path/belt_path.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://vxtutjs55nhh" path="res://world/grid.gd" id="2_fj7yv"]
+[ext_resource type="Script" uid="uid://dke8bwkc61cv" path="res://systems/belt_path/belt_manager.gd" id="3_4717r"]
+[ext_resource type="Script" uid="uid://cv2i7u0x5m256" path="res://world/camera.gd" id="3_h5o24"]
 
 [node name="world" type="Node2D" unique_id=1034354916]
 
-[node name="BeltPath" parent="." unique_id=1294493457 instance=ExtResource("1_f3sb7")]
-visible = false
-position = Vector2(212, 119)
-
 [node name="grid" type="Node2D" parent="." unique_id=1319886767]
 script = ExtResource("2_fj7yv")
+
+[node name="BeltManager" type="Node2D" parent="." unique_id=1092892847]
+script = ExtResource("3_4717r")
+metadata/_custom_type_script = "uid://dke8bwkc61cv"
+
+[node name="Camera" type="Camera2D" parent="." unique_id=566005060]
+script = ExtResource("3_h5o24")

@@ -1,13 +1,20 @@
 class_name BaseBuilding
 extends Node2D
 
-var is_belt:bool=false
+var scene:PackedScene
+var components:PackedStringArray=PackedStringArray()
 
 var square:Square
 var dir:GameConstants.DIRECTION=GameConstants.DIRECTION.UP
 
+func _init() -> void:
+	pass
+
 func _ready() -> void:
-	pass # Replace with function body.
+	update_sprite_direction()
+
+func rotate_tile():
+	dir=GameConstants.NEXT_DIRECTION[dir]
 
 func update_sprite_direction():
 	if (dir==GameConstants.DIRECTION.RIGHT):$Sprite2D.rotation_degrees=90
@@ -21,6 +28,16 @@ func get_center():
 func get_direction_side():
 	return global_position+$Sprite2D.get_rect().size/2+$Sprite2D.get_rect().size/2*GameConstants.DIRECTION_TO_VECTOR[dir]*Vector2(0,-1)
 
+func has_component(component:String):
+	return component.contains(component)
+
+func copy_to(tile):
+	tile.dir=dir
+
+func get_copy():
+	var b=scene.instantiate()
+	copy_to(b)
+	return b
 
 func _process(_delta: float) -> void:
 	pass
