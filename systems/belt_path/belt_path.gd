@@ -6,7 +6,7 @@ var BELT_ITEM=preload("res://systems/belt_path/belt_item.tscn")
 var curve:Curve2D
 var line
 
-var segments:Array[Belt]=[]
+var segments:Array[BasicBelt]=[]
 
 var distance_to_first:float=0.0
 var items:Array[BeltItem]=[]
@@ -29,23 +29,23 @@ func get_distance_to_last():
 		return length
 	return items[-1].offset
 
-func add_belt(belt:Belt):
+func add_belt(belt:BasicBelt):
 	belt.belt_path=self
 	if (!segments.is_empty()): segments[-1].ejector_active=false;segments[-1].clear_ejector_item()
 	segments.append(belt)
-	var old_l=length
-	curve.add_point(belt.get_center())
-	curve.add_point(belt.get_direction_side())
+	for i in belt.get_points_for_path():
+		curve.add_point(i)
 	length=curve.get_baked_length()
-	line.points=curve.get_baked_points()
 
-func add_belt_before(belt:Belt):
+func add_belt_before(belt:BasicBelt):
 	belt.belt_path=self
 	if (!segments.is_empty()): segments[0].acceptor_active=false
 	segments.insert(0,belt)
 	var old_l=length
-	curve.add_point(belt.get_direction_side(),Vector2.ZERO,Vector2.ZERO,0)
-	curve.add_point(belt.get_center(),Vector2.ZERO,Vector2.ZERO,0)
+	var p=belt.get_points_for_path()
+	p.reverse()
+	for i in p:
+		curve.add_point(i,Vector2.ZERO,Vector2.ZERO,0)
 	length=curve.get_baked_length()
 	var l_diff=length-old_l
 	for i in items:

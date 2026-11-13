@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://ci6n1uwx57hqi"]
 
 [ext_resource type="Script" uid="uid://bwobrvsno61f2" path="res://tiles/belt/belt_corner.gd" id="1_b830j"]
+[ext_resource type="Texture2D" uid="uid://chkuw8ndqemdc" path="res://assets/belt_corner.png" id="2_v7uqs"]
 
 [node name="BeltCorner" type="Node2D" unique_id=1013864991]
 script = ExtResource("1_b830j")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1817621761]
+position = Vector2(30, 30)
+texture = ExtResource("2_v7uqs")

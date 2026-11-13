@@ -13,6 +13,9 @@ func _init() -> void:
 func _ready() -> void:
 	update_sprite_direction()
 
+func get_direction():
+	return dir
+
 func rotate_tile():
 	dir=GameConstants.NEXT_DIRECTION[dir]
 
@@ -25,11 +28,11 @@ func update_sprite_direction():
 func get_center():
 	return global_position+$Sprite2D.get_rect().size/2
 
-func get_direction_side():
-	return global_position+$Sprite2D.get_rect().size/2+$Sprite2D.get_rect().size/2*GameConstants.DIRECTION_TO_VECTOR[dir]*Vector2(0,-1)
+func get_direction_side(dirc):
+	return global_position+$Sprite2D.get_rect().size/2+$Sprite2D.get_rect().size/2*GameConstants.DIRECTION_TO_VECTOR[dirc]*Vector2(1,-1)
 
-func has_component(component:String):
-	return component.contains(component)
+func has_component(c:String):
+	return components.has(c)
 
 func copy_to(tile):
 	tile.dir=dir
