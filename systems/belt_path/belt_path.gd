@@ -6,7 +6,6 @@ var BELT_ITEM=preload("res://systems/belt_path/belt_item.tscn")
 var _id:int
 
 var curve:Curve2D
-var line
 
 var segments:Array[BasicBelt]=[]
 
@@ -20,11 +19,6 @@ var item_spacing:float=30
 
 func _ready() -> void:
 	curve=Curve2D.new()
-	line=Line2D.new()
-	add_child(line)
-	line.points=curve.get_baked_points()
-	line.width=10
-	line.default_color=Color(0,1,0)
 
 func get_distance_to_last():
 	if (items.is_empty()):
@@ -38,7 +32,6 @@ func add_belt(belt:BasicBelt):
 	for i in belt.get_points_for_path():
 		curve.add_point(i)
 	length=curve.get_baked_length()
-	line.points=curve.get_baked_points()
 
 func add_belt_before(belt:BasicBelt):
 	belt.belt_path=self
@@ -53,7 +46,6 @@ func add_belt_before(belt:BasicBelt):
 	var l_diff=length-old_l
 	for i in items:
 		i.offset+=l_diff
-	line.points=curve.get_baked_points()
 
 func merge(other:BeltPath):
 	if (other._id==_id): return
