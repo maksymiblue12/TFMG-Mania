@@ -36,6 +36,7 @@ func add_belt(belt:BasicBelt):
 	for i in belt.get_points_for_path():
 		curve.add_point(i)
 	length=curve.get_baked_length()
+	#line.points=curve.get_baked_points()
 
 func add_belt_before(belt:BasicBelt):
 	belt.belt_path=self

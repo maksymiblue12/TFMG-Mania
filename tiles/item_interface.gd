@@ -52,7 +52,7 @@ func copy_to(tile):
 func _process(_delta: float) -> void:
 	super._process(_delta)
 	if (!ejector_active or item_to_eject==GameConstants.ITEM_TYPE.NONE): return
-	var sq=square.get_direction_neighbours()[dir]
+	var sq=square.get_direction_neighbours()[get_direction()]
 	if (sq and sq.has_tile and sq.tile.has_component("item_acceptor")):
 		var t=sq.tile
 		if (t.try_accept_item(item_to_eject)):

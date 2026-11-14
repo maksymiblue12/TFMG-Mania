@@ -3,6 +3,10 @@ extends ItemInterface
 
 var belt_path:BeltPath
 
+func _init() -> void:
+	super._init()
+	components.append("basic_belt")
+
 func get_points_for_path():
 	assert(false,"Not Implemented")
 
