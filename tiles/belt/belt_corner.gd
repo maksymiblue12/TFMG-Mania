@@ -49,6 +49,8 @@ func _ready() -> void:
 	super._ready()
 	GameState.belt_manager.on_belt_corner_added(self)
 	$Sprite2D.flip_v=!flipped
+	block_all_acceptor_directions()
+	blocked_acceptor_directions[get_starting_direction()]=false
 
 func copy_to(tile):
 	super.copy_to(tile)

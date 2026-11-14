@@ -27,7 +27,9 @@ func get_distance_to_last():
 
 func add_belt(belt:BasicBelt):
 	belt.belt_path=self
-	if (!segments.is_empty()): segments[-1].ejector_active=false;segments[-1].clear_ejector_item()
+	if (!segments.is_empty()):
+		segments[-1].disable_ejector()
+		belt.disable_acceptor()
 	segments.append(belt)
 	for i in belt.get_points_for_path():
 		curve.add_point(i)

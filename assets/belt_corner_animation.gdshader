@@ -1,6 +1,7 @@
 shader_type canvas_item;
 
 uniform float speed:hint_range(0.0, 10.0, 0.1)=1.0;
+uniform bool flip_y=false;
 
 void fragment() {
     vec2 uv=UV;
@@ -19,7 +20,7 @@ void fragment() {
         discard;
     }
     float across=outer_radius-r;
-    float along=fract(progress+speed*TIME);
+    float along=fract((flip_y?1.0-progress:progress)+speed*TIME);
 
     vec2 sample_uv=vec2(across,along);
     COLOR=texture(TEXTURE,sample_uv);

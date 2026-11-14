@@ -47,7 +47,7 @@ func get_direction_neighbours():
 		GameConstants.DIRECTION.DOWN:grid.get_square_or_null(grid_id,x_index,y_index+1),
 	}
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if (event.is_action_pressed("mouse_left")):
 		if (has_mouse and !has_tile):
 			set_tile()

@@ -5,6 +5,7 @@ var item_to_eject:GameConstants.ITEM_TYPE=GameConstants.ITEM_TYPE.NONE
 var ejector_active:bool=true
 var accepted_item:GameConstants.ITEM_TYPE=GameConstants.ITEM_TYPE.NONE
 var acceptor_active:bool=true
+var blocked_acceptor_directions:Array[bool]=[false,false,false,false]
 
 func _init() -> void:
 	super._init()
@@ -19,11 +20,19 @@ func pop_accepted_item():
 	accepted_item=GameConstants.ITEM_TYPE.NONE
 	return t
 
-func can_accept_item():
+func can_accept_item(_from_dir:GameConstants.DIRECTION):
 	return true
 
-func try_accept_item(item_type:GameConstants.ITEM_TYPE):
-	if (!acceptor_active or !can_accept_item()): return false
+func block_all_acceptor_directions():
+	blocked_acceptor_directions=[true,true,true,true]
+
+func disable_acceptor():
+	acceptor_active=false
+	pop_accepted_item()
+
+func try_accept_item(item_type:GameConstants.ITEM_TYPE,from_dir:GameConstants.DIRECTION):
+	if (!acceptor_active or blocked_acceptor_directions[GameConstants.OPPOSITE_DIRECTION[from_dir]]): return false
+	if (!can_accept_item(from_dir)): return false
 	if (accepted_item==GameConstants.ITEM_TYPE.NONE):
 		accepted_item=item_type
 		on_item_accepted()
@@ -38,6 +47,10 @@ func try_set_ejector_item(item_type:GameConstants.ITEM_TYPE):
 
 func clear_ejector_item():
 	item_to_eject=GameConstants.ITEM_TYPE.NONE
+
+func disable_ejector():
+	ejector_active=false
+	clear_ejector_item()
 
 func on_item_ejected():
 	pass
@@ -55,6 +68,6 @@ func _process(_delta: float) -> void:
 	var sq=square.get_direction_neighbours()[get_direction()]
 	if (sq and sq.has_tile and sq.tile.has_component("item_acceptor")):
 		var t=sq.tile
-		if (t.try_accept_item(item_to_eject)):
+		if (t.try_accept_item(item_to_eject,get_direction())):
 			item_to_eject=GameConstants.ITEM_TYPE.NONE
 			on_item_ejected()

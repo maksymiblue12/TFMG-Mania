@@ -1,6 +1,113 @@
 [gd_scene format=3 uid="uid://cwlsksu54apuc"]
 
+[ext_resource type="Script" uid="uid://cqpnj030v2fwv" path="res://world/ui/ui.gd" id="1_2jtvl"]
+[ext_resource type="Texture2D" uid="uid://dbl60y6886tlc" path="res://assets/belt.png" id="1_fmcf5"]
+[ext_resource type="PackedScene" uid="uid://pg1it2cub0j8" path="res://world/ui/tile_picker_option.tscn" id="2_2jtvl"]
+[ext_resource type="PackedScene" uid="uid://48hv7ohq0f80" path="res://tiles/belt/belt.tscn" id="4_1edyf"]
+[ext_resource type="PackedScene" uid="uid://ci6n1uwx57hqi" path="res://tiles/belt/belt_corner.tscn" id="6_mhr6j"]
+[ext_resource type="Shader" uid="uid://bpqxn7w608tnx" path="res://assets/belt_corner_animation.gdshader" id="6_o2uhh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2477"]
+bg_color = Color(0.71, 0.53249997, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g30op"]
+shader = ExtResource("6_o2uhh")
+shader_parameter/speed = 0.0
+shader_parameter/flip_y = true
+
+[sub_resource type="Animation" id="Animation_fmcf5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:offset_transform_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [200.0]
+}
+
+[sub_resource type="Animation" id="Animation_pmapg"]
+resource_name = "tile_picker_close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:offset_transform_position:x")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 200.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_tile_picker_closed"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_2jtvl"]
+resource_name = "tile_picker_open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:offset_transform_position:x")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [200.0, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_tile_picker_opened"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pmapg"]
+_data = {
+&"RESET": SubResource("Animation_fmcf5"),
+&"tile_picker_close": SubResource("Animation_pmapg"),
+&"tile_picker_open": SubResource("Animation_2jtvl")
+}
+
 [node name="UI" type="CanvasLayer" unique_id=884143875]
+script = ExtResource("1_2jtvl")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=277913910]
 anchors_preset = 15
@@ -12,3 +119,52 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=406465394]
+layout_mode = 2
+alignment = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer" unique_id=1999194439]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(200, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_v2477")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Panel" unique_id=434300146]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/Panel/MarginContainer" unique_id=129896138]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/ScrollContainer" unique_id=442330395]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TilePickerOption" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1716659385 instance=ExtResource("2_2jtvl")]
+layout_mode = 2
+texture = ExtResource("1_fmcf5")
+scene = ExtResource("4_1edyf")
+
+[node name="TilePickerOption2" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer" unique_id=550196283 instance=ExtResource("2_2jtvl")]
+layout_mode = 2
+texture = ExtResource("1_fmcf5")
+scene = ExtResource("6_mhr6j")
+
+[node name="TextureRect" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer/TilePickerOption2" index="0" unique_id=2064562833]
+material = SubResource("ShaderMaterial_g30op")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/HBoxContainer" unique_id=2035277373]
+libraries/ = SubResource("AnimationLibrary_pmapg")
+
+[editable path="MarginContainer/HBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer/TilePickerOption2"]

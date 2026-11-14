@@ -7,10 +7,14 @@ func _init() -> void:
 	super._init()
 	components.append("basic_belt")
 
+func _ready() -> void:
+	super._ready()
+	blocked_acceptor_directions[get_direction()]=true
+
 func get_points_for_path():
 	assert(false,"Not Implemented")
 
-func can_accept_item():
+func can_accept_item(_from_dir:GameConstants.DIRECTION):
 	return belt_path.can_add_item()
 
 func on_item_accepted():

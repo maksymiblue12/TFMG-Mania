@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://pg1it2cub0j8"]
+
+[ext_resource type="Script" uid="uid://sm3dcqjmxwjg" path="res://world/ui/tile_picker_option.gd" id="1_dlves"]
+[ext_resource type="Texture2D" uid="uid://dbl60y6886tlc" path="res://assets/belt.png" id="1_lsqnp"]
+
+[sub_resource type="Animation" id="Animation_dlves"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:offset_transform_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:offset_transform_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tgll2"]
+resource_name = "click_tile_picker_option"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:offset_transform_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:offset_transform_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_l5wa0"]
+resource_name = "hover_over_tile_picker_option"
+length = 0.375
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:offset_transform_rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.08726646259971647, -0.03490658503988659, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tgll2"]
+_data = {
+&"RESET": SubResource("Animation_dlves"),
+&"click_tile_picker_option": SubResource("Animation_tgll2"),
+&"hover_over_tile_picker_option": SubResource("Animation_l5wa0")
+}
+
+[node name="TilePickerOption" type="VBoxContainer" unique_id=2121589846]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_right = 60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+size_flags_horizontal = 6
+script = ExtResource("1_dlves")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2064562833]
+texture_filter = 1
+layout_mode = 2
+offset_transform_enabled = true
+texture = ExtResource("1_lsqnp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1411777625]
+libraries/ = SubResource("AnimationLibrary_tgll2")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
