@@ -7,7 +7,7 @@ func _init() -> void:
 	components.append("belt")
 
 func get_points_for_path():
-	return [get_center(),get_direction_side(dir)]
+	return [get_direction_side(GameConstants.OPPOSITE_DIRECTION[dir]),get_center(),get_direction_side(dir)]
 
 func _ready() -> void:
 	super._ready()

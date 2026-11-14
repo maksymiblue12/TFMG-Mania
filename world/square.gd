@@ -48,7 +48,7 @@ func get_direction_neighbours():
 	}
 
 func _input(event: InputEvent) -> void:
-	if (event is InputEventMouseButton):
+	if (event.is_action_pressed("mouse_left")):
 		if (has_mouse and !has_tile):
 			set_tile()
 

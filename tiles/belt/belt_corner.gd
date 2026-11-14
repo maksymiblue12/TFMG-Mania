@@ -17,7 +17,7 @@ func get_starting_direction():
 
 func get_points_for_path():
 	var ps=[]
-	var segments=10.0
+	var segments=10
 	var rx=$Sprite2D.get_rect().size.x
 	var ry=$Sprite2D.get_rect().size.y
 	var r=$Sprite2D.get_rect().size.x/2
@@ -36,19 +36,19 @@ func get_points_for_path():
 		start=global_position+Vector2(rx,(ry if flipped else 0))
 		offset=270 if flipped else 0
 
-	var rn=range(segments+1) if flipped else range(segments,-1,-1)
+	var rn=range(segments) if flipped else range(segments,0,-1)
 	for i in rn:
-		var a=deg_to_rad(offset+i/segments*90)
+		var a=deg_to_rad(offset+float(i)/segments*90)
 		var x=start.x-cos(a)*r
 		var y=start.y+sin(a)*r
 		ps.append(Vector2(x,y))
+	ps.append(get_direction_side(get_direction()))
 	return ps
 
 func _ready() -> void:
 	super._ready()
 	GameState.belt_manager.on_belt_corner_added(self)
-	if (flipped):
-		$Sprite2D.flip_v=true
+	$Sprite2D.flip_v=!flipped
 
 func copy_to(tile):
 	super.copy_to(tile)
