@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cofk0n2n54p1n"
-path="res://.godot/imported/aaa.png-b91c2eb3b39c9450403664de56a56a53.ctex"
+uid="uid://c34n1d2q3n1om"
+path="res://.godot/imported/belt_merger.png-b4f9436cedd6dabd40ac44683980cba2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aaa.png"
-dest_files=["res://.godot/imported/aaa.png-b91c2eb3b39c9450403664de56a56a53.ctex"]
+source_file="res://assets/belt_merger.png"
+dest_files=["res://.godot/imported/belt_merger.png-b4f9436cedd6dabd40ac44683980cba2.ctex"]
 
 [params]
 

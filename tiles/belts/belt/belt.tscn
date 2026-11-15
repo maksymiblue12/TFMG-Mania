@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://48hv7ohq0f80"]
 
-[ext_resource type="Script" uid="uid://bl8h8i7ohgrtc" path="res://tiles/belt/belt.gd" id="1_susb0"]
+[ext_resource type="Script" uid="uid://bl8h8i7ohgrtc" path="res://tiles/belts/belt/belt.gd" id="1_susb0"]
 [ext_resource type="Shader" uid="uid://drapj8p1phy68" path="res://assets/belt_animation.gdshader" id="2_htjah"]
 [ext_resource type="Texture2D" uid="uid://dbl60y6886tlc" path="res://assets/belt.png" id="3_htjah"]
 

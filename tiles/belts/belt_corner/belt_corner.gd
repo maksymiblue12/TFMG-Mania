@@ -5,7 +5,7 @@ var flipped:bool=false
 
 func _init() -> void:
 	super._init()
-	scene=preload("res://tiles/belt/belt_corner.tscn")
+	scene=preload("res://tiles/belts/belt_corner/belt_corner.tscn")
 	components.append("belt_corner")
 	dir=GameConstants.DIRECTION.RIGHT
 

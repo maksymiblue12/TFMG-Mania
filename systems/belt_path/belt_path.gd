@@ -79,10 +79,6 @@ func on_ejected_item():
 	it.queue_free()
 	wants_to_push=false
 
-func _unhandled_input(event: InputEvent) -> void:
-	if (event.is_action_released("ui_accept")):
-		try_add_item(GameConstants.ITEM_TYPE.iron)
-
 func _process(delta: float) -> void:
 	if (items.is_empty()): return
 

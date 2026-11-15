@@ -3,9 +3,17 @@
 [ext_resource type="Script" uid="uid://cqpnj030v2fwv" path="res://world/ui/ui.gd" id="1_2jtvl"]
 [ext_resource type="Texture2D" uid="uid://dbl60y6886tlc" path="res://assets/belt.png" id="1_fmcf5"]
 [ext_resource type="PackedScene" uid="uid://pg1it2cub0j8" path="res://world/ui/tile_picker_option.tscn" id="2_2jtvl"]
-[ext_resource type="PackedScene" uid="uid://48hv7ohq0f80" path="res://tiles/belt/belt.tscn" id="4_1edyf"]
-[ext_resource type="PackedScene" uid="uid://ci6n1uwx57hqi" path="res://tiles/belt/belt_corner.tscn" id="6_mhr6j"]
+[ext_resource type="PackedScene" uid="uid://48hv7ohq0f80" path="res://tiles/belts/belt/belt.tscn" id="4_1edyf"]
+[ext_resource type="PackedScene" uid="uid://ci6n1uwx57hqi" path="res://tiles/belts/belt_corner/belt_corner.tscn" id="6_mhr6j"]
 [ext_resource type="Shader" uid="uid://bpqxn7w608tnx" path="res://assets/belt_corner_animation.gdshader" id="6_o2uhh"]
+[ext_resource type="Texture2D" uid="uid://c34n1d2q3n1om" path="res://assets/belt_merger.png" id="7_b41bv"]
+[ext_resource type="PackedScene" uid="uid://c8ss0d8t5b4jo" path="res://tiles/belts/belt_merger/belt_merger.tscn" id="8_faapr"]
+[ext_resource type="Texture2D" uid="uid://dudgkh1miulas" path="res://assets/item_black_hole.png" id="9_s1k7j"]
+[ext_resource type="PackedScene" uid="uid://cpvwtjer3n2u8" path="res://tiles/item_black_hole/item_black_hole.tscn" id="10_qlfln"]
+[ext_resource type="Texture2D" uid="uid://cl0cfvripa8yv" path="res://assets/belt_splitter.png" id="11_te1d7"]
+[ext_resource type="PackedScene" uid="uid://b475w2vntlm8e" path="res://tiles/belts/belt_splitter/belt_splitter.tscn" id="12_abnl4"]
+[ext_resource type="Texture2D" uid="uid://du0qb2t2j7mey" path="res://assets/item_creator.png" id="13_3pprp"]
+[ext_resource type="PackedScene" uid="uid://c3x4x3ov5vcpk" path="res://tiles/debug/item_creator/item_creator.tscn" id="14_cdabw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2477"]
 bg_color = Color(0.71, 0.53249997, 0, 1)
@@ -163,6 +171,26 @@ scene = ExtResource("6_mhr6j")
 
 [node name="TextureRect" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer/TilePickerOption2" index="0" unique_id=2064562833]
 material = SubResource("ShaderMaterial_g30op")
+
+[node name="TilePickerOption3" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer" unique_id=2121589846 instance=ExtResource("2_2jtvl")]
+layout_mode = 2
+texture = ExtResource("7_b41bv")
+scene = ExtResource("8_faapr")
+
+[node name="TilePickerOption5" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer" unique_id=46080700 instance=ExtResource("2_2jtvl")]
+layout_mode = 2
+texture = ExtResource("11_te1d7")
+scene = ExtResource("12_abnl4")
+
+[node name="TilePickerOption4" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1522163489 instance=ExtResource("2_2jtvl")]
+layout_mode = 2
+texture = ExtResource("9_s1k7j")
+scene = ExtResource("10_qlfln")
+
+[node name="TilePickerOption6" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1449680721 instance=ExtResource("2_2jtvl")]
+layout_mode = 2
+texture = ExtResource("13_3pprp")
+scene = ExtResource("14_cdabw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/HBoxContainer" unique_id=2035277373]
 libraries/ = SubResource("AnimationLibrary_pmapg")

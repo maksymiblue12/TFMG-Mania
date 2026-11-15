@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ci6n1uwx57hqi"]
 
-[ext_resource type="Script" uid="uid://bwobrvsno61f2" path="res://tiles/belt/belt_corner.gd" id="1_b830j"]
+[ext_resource type="Script" uid="uid://bwobrvsno61f2" path="res://tiles/belts/belt_corner/belt_corner.gd" id="1_b830j"]
 [ext_resource type="Shader" uid="uid://bpqxn7w608tnx" path="res://assets/belt_corner_animation.gdshader" id="2_5swj6"]
 [ext_resource type="Texture2D" uid="uid://dbl60y6886tlc" path="res://assets/belt.png" id="3_qabn8"]
 

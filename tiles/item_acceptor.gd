@@ -3,6 +3,7 @@ extends BaseBuilding
 
 var accepted_item:GameConstants.ITEM_TYPE=GameConstants.ITEM_TYPE.NONE
 var acceptor_active:bool=true
+var blocked_acceptor_directions:Array[bool]=[false,false,false,false]
 
 func _init() -> void:
 	super._init()
@@ -16,16 +17,19 @@ func pop_accepted_item():
 	accepted_item=GameConstants.ITEM_TYPE.NONE
 	return t
 
-func can_accept_item():
+func can_accept_item(_from_dir:GameConstants.DIRECTION):
 	return true
 
-func copy_to(tile):
-	super.copy_to(tile)
-	tile.accepted_item=accepted_item
-	tile.acceptor_active=acceptor_active
+func block_all_acceptor_directions():
+	blocked_acceptor_directions=[true,true,true,true]
 
-func try_accept_item(item_type:GameConstants.ITEM_TYPE):
-	if (!acceptor_active or !can_accept_item()): return false
+func disable_acceptor():
+	acceptor_active=false
+	pop_accepted_item()
+
+func try_accept_item(item_type:GameConstants.ITEM_TYPE,from_dir:GameConstants.DIRECTION):
+	if (!acceptor_active or blocked_acceptor_directions[GameConstants.OPPOSITE_DIRECTION[from_dir]]): return false
+	if (!can_accept_item(from_dir)): return false
 	if (accepted_item==GameConstants.ITEM_TYPE.NONE):
 		accepted_item=item_type
 		on_item_accepted()

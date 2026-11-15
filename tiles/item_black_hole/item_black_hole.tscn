@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cpvwtjer3n2u8"]
+
+[ext_resource type="Script" uid="uid://c78b04801e1uh" path="res://tiles/item_black_hole/item_black_hole.gd" id="1_g3e0j"]
+[ext_resource type="Texture2D" uid="uid://dudgkh1miulas" path="res://assets/item_black_hole.png" id="2_ta8yg"]
+
+[node name="ItemBlackHole" type="Node2D" unique_id=1973542723]
+script = ExtResource("1_g3e0j")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=548886869]
+texture_filter = 1
+texture = ExtResource("2_ta8yg")
+offset = Vector2(30, 30)

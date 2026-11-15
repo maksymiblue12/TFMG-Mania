@@ -3,7 +3,7 @@ extends BasicBelt
 
 func _init() -> void:
 	super._init()
-	scene=preload("res://tiles/belt/belt.tscn")
+	scene=preload("res://tiles/belts/belt/belt.tscn")
 	components.append("belt")
 
 func get_points_for_path():

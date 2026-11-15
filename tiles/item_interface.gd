@@ -30,14 +30,26 @@ func disable_acceptor():
 	acceptor_active=false
 	pop_accepted_item()
 
+func has_accepted_item():
+	return accepted_item!=GameConstants.ITEM_TYPE.NONE
+
+func could_accept_item(from_dir:GameConstants.DIRECTION):
+	return acceptor_active and !blocked_acceptor_directions[GameConstants.OPPOSITE_DIRECTION[from_dir]] and can_accept_item(from_dir) and !has_accepted_item()
+
 func try_accept_item(item_type:GameConstants.ITEM_TYPE,from_dir:GameConstants.DIRECTION):
 	if (!acceptor_active or blocked_acceptor_directions[GameConstants.OPPOSITE_DIRECTION[from_dir]]): return false
 	if (!can_accept_item(from_dir)): return false
-	if (accepted_item==GameConstants.ITEM_TYPE.NONE):
+	if (!has_accepted_item()):
 		accepted_item=item_type
 		on_item_accepted()
 		return true
 	return false
+
+func wants_to_eject():
+	return item_to_eject!=GameConstants.ITEM_TYPE.NONE
+
+func get_ejector_direction():
+	return get_direction()
 
 func try_set_ejector_item(item_type:GameConstants.ITEM_TYPE):
 	if (item_to_eject==GameConstants.ITEM_TYPE.NONE):
@@ -65,9 +77,11 @@ func copy_to(tile):
 func _process(_delta: float) -> void:
 	super._process(_delta)
 	if (!ejector_active or item_to_eject==GameConstants.ITEM_TYPE.NONE): return
-	var sq=square.get_direction_neighbours()[get_direction()]
+	var d=get_ejector_direction()
+	if (!ejector_active): return
+	var sq=square.get_direction_neighbours()[d]
 	if (sq and sq.has_tile and sq.tile.has_component("item_acceptor")):
 		var t=sq.tile
-		if (t.try_accept_item(item_to_eject,get_direction())):
+		if (t.try_accept_item(item_to_eject,d)):
 			item_to_eject=GameConstants.ITEM_TYPE.NONE
 			on_item_ejected()

@@ -8,6 +8,12 @@ func _init() -> void:
 	super._init()
 	components.append("item_ejector")
 
+func wants_to_eject():
+	return item_to_eject!=GameConstants.ITEM_TYPE.NONE
+
+func get_ejector_direction():
+	return get_direction()
+
 func try_set_ejector_item(item_type:GameConstants.ITEM_TYPE):
 	if (item_to_eject==GameConstants.ITEM_TYPE.NONE):
 		item_to_eject=item_type
@@ -16,6 +22,10 @@ func try_set_ejector_item(item_type:GameConstants.ITEM_TYPE):
 
 func clear_ejector_item():
 	item_to_eject=GameConstants.ITEM_TYPE.NONE
+
+func disable_ejector():
+	ejector_active=false
+	clear_ejector_item()
 
 func on_item_ejected():
 	pass
@@ -28,9 +38,11 @@ func copy_to(tile):
 func _process(_delta: float) -> void:
 	super._process(_delta)
 	if (!ejector_active or item_to_eject==GameConstants.ITEM_TYPE.NONE): return
-	var sq=square.get_direction_neighbours()[get_direction()]
+	var d=get_ejector_direction()
+	if (!ejector_active): return
+	var sq=square.get_direction_neighbours()[d]
 	if (sq and sq.has_tile and sq.tile.has_component("item_acceptor")):
 		var t=sq.tile
-		if (t.try_accept_item(item_to_eject)):
+		if (t.try_accept_item(item_to_eject,d)):
 			item_to_eject=GameConstants.ITEM_TYPE.NONE
 			on_item_ejected()
