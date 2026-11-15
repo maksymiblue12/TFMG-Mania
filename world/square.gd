@@ -43,16 +43,23 @@ func get_direction_neighbours():
 		GameConstants.DIRECTION.DOWN:grid.get_square_or_null(grid_id,x_index,y_index+1),
 	}
 
+func get_square_relative(offset:Vector2):
+	return grid.get_square_or_null(grid_id,x_index+offset.x,y_index+offset.y)
+
 func _unhandled_input(event: InputEvent) -> void:
 	if (event.is_action_pressed("mouse_left")):
 		if (has_mouse and !has_tile):
-			set_tile()
+			set_tile(GameState.get_placable_tile())
 
-func set_tile():
+func set_tile(_tile:Node2D,reparent_instead:bool=false):
 	has_tile=true
-	tile=GameState.get_placable_tile()
+	tile=_tile
+	tile.z_index=1
 	tile.square=self
-	add_child(tile)
+	if (reparent_instead):
+		tile.reparent(self)
+	else:
+		add_child(tile)
 
 func _on_mouse_entered() -> void:
 	if (has_mouse):return

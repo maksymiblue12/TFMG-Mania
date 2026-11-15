@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://b475w2vntlm8e" path="res://tiles/belts/belt_splitter/belt_splitter.tscn" id="12_abnl4"]
 [ext_resource type="Texture2D" uid="uid://du0qb2t2j7mey" path="res://assets/item_creator.png" id="13_3pprp"]
 [ext_resource type="PackedScene" uid="uid://c3x4x3ov5vcpk" path="res://tiles/debug/item_creator/item_creator.tscn" id="14_cdabw"]
+[ext_resource type="Script" uid="uid://b6xi34sjwlvs7" path="res://world/ui/current_tile_preview.gd" id="15_cdabw"]
+[ext_resource type="Texture2D" uid="uid://351nhbs51s31" path="res://assets/belt_frog.png" id="15_khixw"]
+[ext_resource type="PackedScene" uid="uid://4ocdayfrv7vh" path="res://tiles/machines/furnace/furnace.tscn" id="16_sjk6q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2477"]
 bg_color = Color(0.71, 0.53249997, 0, 1)
@@ -27,7 +30,15 @@ corner_radius_top_right = 25
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7y18a"]
+content_margin_top = 10.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g30op"]
+shader = ExtResource("6_o2uhh")
+shader_parameter/speed = 0.0
+shader_parameter/flip_y = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cdabw"]
 shader = ExtResource("6_o2uhh")
 shader_parameter/speed = 0.0
 shader_parameter/flip_y = true
@@ -151,48 +162,109 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/Panel/MarginContainer" unique_id=129896138]
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/HBoxContainer/Panel/MarginContainer" unique_id=271126485]
 layout_mode = 2
+theme_override_constants/side_margin = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7y18a")
+current_tab = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/ScrollContainer" unique_id=442330395]
+[node name="Belt" type="ScrollContainer" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/TabContainer" unique_id=129896138]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/TabContainer/Belt" unique_id=442330395]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TilePickerOption" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1716659385 instance=ExtResource("2_2jtvl")]
+[node name="TilePickerOption" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/TabContainer/Belt/VBoxContainer" unique_id=1716659385 instance=ExtResource("2_2jtvl")]
 layout_mode = 2
 texture = ExtResource("1_fmcf5")
 scene = ExtResource("4_1edyf")
 
-[node name="TilePickerOption2" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer" unique_id=550196283 instance=ExtResource("2_2jtvl")]
+[node name="TilePickerOption2" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/TabContainer/Belt/VBoxContainer" unique_id=550196283 instance=ExtResource("2_2jtvl")]
 layout_mode = 2
 texture = ExtResource("1_fmcf5")
 scene = ExtResource("6_mhr6j")
 
-[node name="TextureRect" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer/TilePickerOption2" index="0" unique_id=2064562833]
+[node name="TextureRect" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/TabContainer/Belt/VBoxContainer/TilePickerOption2" index="0" unique_id=2064562833]
 material = SubResource("ShaderMaterial_g30op")
 
-[node name="TilePickerOption3" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer" unique_id=2121589846 instance=ExtResource("2_2jtvl")]
+[node name="TilePickerOption7" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/TabContainer/Belt/VBoxContainer" unique_id=2121589846 instance=ExtResource("2_2jtvl")]
+layout_mode = 2
+texture = ExtResource("1_fmcf5")
+scene = ExtResource("6_mhr6j")
+function_to_call_name = "flip"
+
+[node name="TextureRect" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/TabContainer/Belt/VBoxContainer/TilePickerOption7" index="0" unique_id=2064562833]
+material = SubResource("ShaderMaterial_cdabw")
+flip_h = true
+
+[node name="TilePickerOption3" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/TabContainer/Belt/VBoxContainer" unique_id=1823678049 instance=ExtResource("2_2jtvl")]
 layout_mode = 2
 texture = ExtResource("7_b41bv")
 scene = ExtResource("8_faapr")
 
-[node name="TilePickerOption5" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer" unique_id=46080700 instance=ExtResource("2_2jtvl")]
+[node name="TilePickerOption5" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/TabContainer/Belt/VBoxContainer" unique_id=46080700 instance=ExtResource("2_2jtvl")]
 layout_mode = 2
 texture = ExtResource("11_te1d7")
 scene = ExtResource("12_abnl4")
 
-[node name="TilePickerOption4" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1522163489 instance=ExtResource("2_2jtvl")]
+[node name="TilePickerOption4" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/TabContainer/Belt/VBoxContainer" unique_id=1522163489 instance=ExtResource("2_2jtvl")]
 layout_mode = 2
 texture = ExtResource("9_s1k7j")
 scene = ExtResource("10_qlfln")
 
-[node name="TilePickerOption6" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1449680721 instance=ExtResource("2_2jtvl")]
+[node name="TilePickerOption6" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/TabContainer/Belt/VBoxContainer" unique_id=1449680721 instance=ExtResource("2_2jtvl")]
 layout_mode = 2
 texture = ExtResource("13_3pprp")
 scene = ExtResource("14_cdabw")
 
+[node name="Machines" type="ScrollContainer" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/TabContainer" unique_id=1873459311]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/TabContainer/Machines" unique_id=1516472648]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TilePickerOption" parent="MarginContainer/HBoxContainer/Panel/MarginContainer/TabContainer/Machines/VBoxContainer" unique_id=663436585 instance=ExtResource("2_2jtvl")]
+layout_mode = 2
+texture = ExtResource("15_khixw")
+scene = ExtResource("16_sjk6q")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/HBoxContainer" unique_id=2035277373]
 libraries/ = SubResource("AnimationLibrary_pmapg")
 
-[editable path="MarginContainer/HBoxContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer/TilePickerOption2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=190519951]
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=240744299]
+layout_mode = 2
+
+[node name="TilePreview" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=540897105]
+modulate = Color(1, 1, 1, 0.6)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.8, 0.8)
+script = ExtResource("15_cdabw")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/TilePreview" unique_id=1651989865]
+texture_filter = 1
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("1_fmcf5")
+
+[editable path="MarginContainer/HBoxContainer/Panel/MarginContainer/TabContainer/Belt/VBoxContainer/TilePickerOption2"]
+[editable path="MarginContainer/HBoxContainer/Panel/MarginContainer/TabContainer/Belt/VBoxContainer/TilePickerOption7"]

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://2tbj0igd6wsw"]
+
+[ext_resource type="Script" uid="uid://d1qpnbfa01653" path="res://tiles/machines/helpers/empty/empty.gd" id="1_ftaeo"]
+
+[node name="Empty" type="Node2D" unique_id=615153663]
+script = ExtResource("1_ftaeo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1595526078]

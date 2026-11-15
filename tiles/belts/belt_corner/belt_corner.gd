@@ -9,6 +9,9 @@ func _init() -> void:
 	components.append("belt_corner")
 	dir=GameConstants.DIRECTION.RIGHT
 
+func flip():
+	flipped=!flipped
+
 func get_direction():
 	return GameConstants.OPPOSITE_DIRECTION[dir] if flipped else dir
 

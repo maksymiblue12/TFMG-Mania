@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dh1pwmaom66c2"]
+
+[ext_resource type="Script" uid="uid://dl6bn0tpd8460" path="res://tiles/machines/helpers/input/input.gd" id="1_isqta"]
+
+[node name="Input" type="Node2D" unique_id=1879743161]
+script = ExtResource("1_isqta")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=566288412]

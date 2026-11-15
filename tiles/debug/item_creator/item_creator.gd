@@ -6,6 +6,7 @@ func _init() -> void:
 	scene=preload("res://tiles/debug/item_creator/item_creator.tscn")
 	components.append("debug")
 	components.append("item_creator")
+	rotatable=false
 
 func _on_timer_timeout():
 	for i in GameConstants.DIRECTION.values():

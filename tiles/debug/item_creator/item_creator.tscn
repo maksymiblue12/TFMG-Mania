@@ -7,6 +7,7 @@
 script = ExtResource("1_hphn8")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=852147232]
+texture_filter = 1
 texture = ExtResource("1_enb3j")
 offset = Vector2(30, 30)
 

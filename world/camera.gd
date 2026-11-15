@@ -7,7 +7,7 @@ extends Camera2D
 
 var zoom_level:int=0
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if (event is InputEventMouseMotion):
 		if (Input.is_action_pressed("mouse_right")):
 			position-=event.screen_relative*Vector2(1/zoom.x,1/zoom.y)
