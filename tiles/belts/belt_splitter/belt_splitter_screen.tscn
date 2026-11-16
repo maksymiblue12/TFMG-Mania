@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://n3cs2ck26f1p"]
+
+[ext_resource type="Script" uid="uid://cunjigq0lmsq3" path="res://tiles/belts/belt_splitter/belt_splitter_screen.gd" id="1_m80oq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4huc2"]
+bg_color = Color(0.15487596, 0.154876, 0.15487587, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[node name="BeltSplitterScreen" type="Control" unique_id=1267958124]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m80oq")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=623107496]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=331113998]
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4huc2")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel" unique_id=1937635653]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=524750838]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1012516358]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OptionButton" type="OptionButton" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=614580491]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="VSeparator" type="VSeparator" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=280977398]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="OptionButton2" type="OptionButton" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=174321473]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="VSeparator2" type="VSeparator" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=257189692]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="OptionButton3" type="OptionButton" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1206458487]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1607930794]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "ok"
+
+[connection signal="pressed" from="CenterContainer/Panel/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

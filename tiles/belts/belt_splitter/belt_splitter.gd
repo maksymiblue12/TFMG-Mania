@@ -1,7 +1,16 @@
 class_name BeltSplitter
 extends ItemInterface
 
+var SCREEN=preload("res://tiles/belts/belt_splitter/belt_splitter_screen.tscn")
+
+static var ITEM_TYPE_TO_ID={
+	"any":0,
+	"iron":1,
+	"coal":2,
+}
+
 var avaiable_dirs:Array[bool]=[false,false,false,false]
+var filter_dirs:Array[String]=["any","any","any"]
 var current_dir:GameConstants.DIRECTION=GameConstants.OPPOSITE_DIRECTION[dir]
 
 func _init() -> void:
@@ -14,6 +23,14 @@ func _ready() -> void:
 	block_all_acceptor_directions()
 	blocked_acceptor_directions[GameConstants.OPPOSITE_DIRECTION[dir]]=false
 	next_direction()
+
+func on_interact():
+	var s=SCREEN.instantiate()
+	s.load_data("any","any","any",self.on_close_screen)
+	GameState.ui.show_screen(s)
+
+func on_close_screen(new_item_type_1,new_item_type_2,new_item_type_3):
+	GameState.ui.hide_screen()
 
 func on_item_accepted():
 	if (try_set_ejector_item(accepted_item)):
