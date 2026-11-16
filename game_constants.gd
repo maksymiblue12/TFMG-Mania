@@ -35,7 +35,7 @@ var STRING_TO_ITEM_TYPE={
 var ITEM_TYPE_TO_TEXTURE={
 	ITEM_TYPE.NONE:preload("res://assets/textures/items/none.png"),
 	ITEM_TYPE.iron:preload("res://assets/textures/items/iron.png"),
-	ITEM_TYPE.coal:preload("res://assets/textures/items/none.png"),
+	ITEM_TYPE.coal:preload("res://assets/textures/items/coal.png"),
 }
 
 enum TOOL_TYPE {interact,place}

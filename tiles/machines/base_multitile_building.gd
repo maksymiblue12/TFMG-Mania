@@ -11,6 +11,7 @@ func _init() -> void:
 	super._init()
 	components.append("multitile")
 
+
 func _ready() -> void:
 	super._ready()
 	var special={}

@@ -7,9 +7,10 @@ extends CanvasLayer
 
 var tile_picker_open:bool=false
 
+var current_screen:Control
+
 func _ready() -> void:
-	for t in $MarginContainer/HBoxContainer/Panel/MarginContainer/TabContainer/Belt/VBoxContainer.get_children():
-		t.ui=self
+	GameState.ui=self
 
 func _input(event: InputEvent) -> void:
 	if (event.is_action_pressed("open_tile_picker")):
@@ -18,6 +19,15 @@ func _input(event: InputEvent) -> void:
 			anim_player.play("tile_picker_close")
 		else:
 			anim_player.play("tile_picker_open")
+
+func show_screen(screen:Control):
+	GameState.showing_screen=true
+	$MarginContainer.add_child(screen)
+	current_screen=screen
+
+func hide_screen():
+	current_screen.queue_free()
+	GameState.showing_screen=false
 
 func on_tile_picker_opened():
 	tile_picker_open=true

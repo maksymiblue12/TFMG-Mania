@@ -63,7 +63,7 @@ func add_item(item_type:GameConstants.ITEM_TYPE):
 	var item:BeltItem=BELT_ITEM.instantiate()
 	add_child(item)
 	items.append(item)
-	item.item_type=item_type
+	item.create(item_type)
 
 func can_add_item():
 	return get_distance_to_last()>=item_spacing or items.is_empty()

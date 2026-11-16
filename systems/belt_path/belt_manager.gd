@@ -7,6 +7,9 @@ var current_id:int=0
 
 var belt_paths:Array[BeltPath]=[]
 
+func _ready() -> void:
+	GameState.belt_manager=self
+
 func is_belt(sq:Square,dir:GameConstants.DIRECTION):
 	return sq and sq.has_tile and sq.tile.has_component("basic_belt") and sq.tile.get_direction()==dir
 

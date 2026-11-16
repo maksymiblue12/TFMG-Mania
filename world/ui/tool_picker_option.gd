@@ -7,6 +7,6 @@ extends Button
 func _ready() -> void:
 	text=tool_name
 
-
 func _on_pressed() -> void:
+	if (GameState.showing_screen): return
 	GameState.tool=tool_type

@@ -34,7 +34,7 @@ func _input(event: InputEvent) -> void:
 		for k in grids.keys():
 			var v=grids[k]
 			var mouse_pos=get_global_mouse_position()
-			if (!v["bounds"].has_point(mouse_pos)):
+			if (!v["bounds"].has_point(mouse_pos) or GameState.showing_screen):
 				v[v["selected"]]._on_mouse_exited()
 				continue
 			var pos=Vector2i((mouse_pos-v["bounds"].position)/60)
