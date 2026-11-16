@@ -33,11 +33,12 @@ func _input(event: InputEvent) -> void:
 	if (event is InputEventMouseMotion):
 		for k in grids.keys():
 			var v=grids[k]
-			if (!v["bounds"].has_point(get_global_mouse_position())):
+			var mouse_pos=get_global_mouse_position()
+			if (!v["bounds"].has_point(mouse_pos)):
 				v[v["selected"]]._on_mouse_exited()
 				continue
-			var pos=Vector2i((get_global_mouse_position()-v["bounds"].position)/60)
-			v[pos]._on_mouse_entered()
+			var pos=Vector2i((mouse_pos-v["bounds"].position)/60)
 			if (v["selected"]!=pos):
 				v[v["selected"]]._on_mouse_exited()
+			v[pos]._on_mouse_entered()
 			v["selected"]=pos

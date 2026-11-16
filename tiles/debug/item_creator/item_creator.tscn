@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c3x4x3ov5vcpk"]
 
-[ext_resource type="Texture2D" uid="uid://du0qb2t2j7mey" path="res://assets/item_creator.png" id="1_enb3j"]
+[ext_resource type="Texture2D" uid="uid://du0qb2t2j7mey" path="res://assets/textures/buildings/item_creator.png" id="1_enb3j"]
 [ext_resource type="Script" uid="uid://dthn1ctd33m02" path="res://tiles/debug/item_creator/item_creator.gd" id="1_hphn8"]
 
 [node name="ItemCreator" type="Node2D" unique_id=382922023]

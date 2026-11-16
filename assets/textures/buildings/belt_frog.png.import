@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dudgkh1miulas"
-path="res://.godot/imported/item_black_hole.png-935994895485e5cf3c607d750a2a96e8.ctex"
+uid="uid://351nhbs51s31"
+path="res://.godot/imported/belt_frog.png-0551a320562c4143ec38d404cf7a957f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/item_black_hole.png"
-dest_files=["res://.godot/imported/item_black_hole.png-935994895485e5cf3c607d750a2a96e8.ctex"]
+source_file="res://assets/textures/buildings/belt_frog.png"
+dest_files=["res://.godot/imported/belt_frog.png-0551a320562c4143ec38d404cf7a957f.ctex"]
 
 [params]
 

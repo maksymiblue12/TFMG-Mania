@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvqrfsjd1fgws"
-path="res://.godot/imported/incinerator.png-db19f5ce4def71ff7bc36d08dd78d583.ctex"
+uid="uid://dudgkh1miulas"
+path="res://.godot/imported/item_black_hole.png-e317c0621a172d69d1d9f0b7b7d80342.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/incinerator.png"
-dest_files=["res://.godot/imported/incinerator.png-db19f5ce4def71ff7bc36d08dd78d583.ctex"]
+source_file="res://assets/textures/buildings/item_black_hole.png"
+dest_files=["res://.godot/imported/item_black_hole.png-e317c0621a172d69d1d9f0b7b7d80342.ctex"]
 
 [params]
 

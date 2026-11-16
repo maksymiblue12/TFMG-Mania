@@ -1,22 +1,23 @@
 [gd_scene format=3 uid="uid://cwlsksu54apuc"]
 
 [ext_resource type="Script" uid="uid://cqpnj030v2fwv" path="res://world/ui/ui.gd" id="1_2jtvl"]
-[ext_resource type="Texture2D" uid="uid://dbl60y6886tlc" path="res://assets/belt.png" id="1_fmcf5"]
+[ext_resource type="Texture2D" uid="uid://dbl60y6886tlc" path="res://assets/textures/buildings/belt.png" id="1_fmcf5"]
 [ext_resource type="PackedScene" uid="uid://pg1it2cub0j8" path="res://world/ui/tile_picker_option.tscn" id="2_2jtvl"]
 [ext_resource type="PackedScene" uid="uid://48hv7ohq0f80" path="res://tiles/belts/belt/belt.tscn" id="4_1edyf"]
 [ext_resource type="PackedScene" uid="uid://ci6n1uwx57hqi" path="res://tiles/belts/belt_corner/belt_corner.tscn" id="6_mhr6j"]
-[ext_resource type="Shader" uid="uid://bpqxn7w608tnx" path="res://assets/belt_corner_animation.gdshader" id="6_o2uhh"]
-[ext_resource type="Texture2D" uid="uid://c34n1d2q3n1om" path="res://assets/belt_merger.png" id="7_b41bv"]
+[ext_resource type="Shader" uid="uid://bpqxn7w608tnx" path="res://assets/shaders/belt_corner_animation.gdshader" id="6_o2uhh"]
+[ext_resource type="Texture2D" uid="uid://c34n1d2q3n1om" path="res://assets/textures/buildings/belt_merger.png" id="7_b41bv"]
 [ext_resource type="PackedScene" uid="uid://c8ss0d8t5b4jo" path="res://tiles/belts/belt_merger/belt_merger.tscn" id="8_faapr"]
-[ext_resource type="Texture2D" uid="uid://dudgkh1miulas" path="res://assets/item_black_hole.png" id="9_s1k7j"]
+[ext_resource type="Texture2D" uid="uid://dudgkh1miulas" path="res://assets/textures/buildings/item_black_hole.png" id="9_s1k7j"]
 [ext_resource type="PackedScene" uid="uid://cpvwtjer3n2u8" path="res://tiles/item_black_hole/item_black_hole.tscn" id="10_qlfln"]
-[ext_resource type="Texture2D" uid="uid://cl0cfvripa8yv" path="res://assets/belt_splitter.png" id="11_te1d7"]
+[ext_resource type="Texture2D" uid="uid://cl0cfvripa8yv" path="res://assets/textures/buildings/belt_splitter.png" id="11_te1d7"]
 [ext_resource type="PackedScene" uid="uid://b475w2vntlm8e" path="res://tiles/belts/belt_splitter/belt_splitter.tscn" id="12_abnl4"]
-[ext_resource type="Texture2D" uid="uid://du0qb2t2j7mey" path="res://assets/item_creator.png" id="13_3pprp"]
+[ext_resource type="Texture2D" uid="uid://du0qb2t2j7mey" path="res://assets/textures/buildings/item_creator.png" id="13_3pprp"]
 [ext_resource type="PackedScene" uid="uid://c3x4x3ov5vcpk" path="res://tiles/debug/item_creator/item_creator.tscn" id="14_cdabw"]
 [ext_resource type="Script" uid="uid://b6xi34sjwlvs7" path="res://world/ui/current_tile_preview.gd" id="15_cdabw"]
-[ext_resource type="Texture2D" uid="uid://351nhbs51s31" path="res://assets/belt_frog.png" id="15_khixw"]
+[ext_resource type="Texture2D" uid="uid://351nhbs51s31" path="res://assets/textures/buildings/belt_frog.png" id="15_khixw"]
 [ext_resource type="PackedScene" uid="uid://4ocdayfrv7vh" path="res://tiles/machines/furnace/furnace.tscn" id="16_sjk6q"]
+[ext_resource type="PackedScene" uid="uid://hp0ea4cuejp6" path="res://world/ui/tool_picker_option.tscn" id="18_sjk6q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2477"]
 bg_color = Color(0.71, 0.53249997, 0, 1)
@@ -265,6 +266,20 @@ offset_right = 40.0
 grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("1_fmcf5")
+
+[node name="Tools" type="VBoxContainer" parent="MarginContainer" unique_id=797829023]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="ToolPickerOption" parent="MarginContainer/Tools" unique_id=1800087442 instance=ExtResource("18_sjk6q")]
+layout_mode = 2
+tool_name = "Interact"
+
+[node name="ToolPickerOption2" parent="MarginContainer/Tools" unique_id=1456236263 instance=ExtResource("18_sjk6q")]
+layout_mode = 2
+tool_name = "Place"
+tool_type = 1
 
 [editable path="MarginContainer/HBoxContainer/Panel/MarginContainer/TabContainer/Belt/VBoxContainer/TilePickerOption2"]
 [editable path="MarginContainer/HBoxContainer/Panel/MarginContainer/TabContainer/Belt/VBoxContainer/TilePickerOption7"]

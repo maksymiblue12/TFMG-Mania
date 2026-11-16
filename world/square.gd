@@ -3,6 +3,8 @@ extends Node2D
 
 @onready var panel=$Panel
 
+signal mouse_enter(enter:bool,interact:bool)
+
 var grid:Grid
 var x_index:int
 var y_index:int
@@ -48,8 +50,11 @@ func get_square_relative(offset:Vector2):
 
 func _unhandled_input(event: InputEvent) -> void:
 	if (event.is_action_pressed("mouse_left")):
-		if (has_mouse and !has_tile):
+		if (!has_mouse): return
+		if (!has_tile and GameState.tool==GameConstants.TOOL_TYPE.place):
 			set_tile(GameState.get_placable_tile())
+		elif (has_tile and GameState.tool==GameConstants.TOOL_TYPE.interact):
+			tile.on_interact()
 
 func set_tile(_tile:Node2D,reparent_instead:bool=false):
 	has_tile=true
@@ -61,12 +66,29 @@ func set_tile(_tile:Node2D,reparent_instead:bool=false):
 	else:
 		add_child(tile)
 
+func highlight(interaction:bool):
+	if (interaction):
+		modulate=Color(1.0, 0.8, 0.8, 1.0)
+	else:
+		stylebox.bg_color=Color(0.0, 0.033, 1.0, 0.25)
+
+func stop_highlight():
+	modulate=Color(1,1,1)
+	stylebox.bg_color=Color(0.0, 0.0, 0.0, 0.0)
+
 func _on_mouse_entered() -> void:
 	if (has_mouse):return
 	has_mouse=true
-	stylebox.bg_color=Color(0.0, 0.033, 1.0, 0.25)
+	if (GameState.tool==GameConstants.TOOL_TYPE.interact):
+		if (has_tile):
+			mouse_enter.emit(true,true)
+			highlight(true)
+	else:
+		mouse_enter.emit(true,false)
+		highlight(false)
 
 func _on_mouse_exited() -> void:
 	if (!has_mouse):return
 	has_mouse=false
-	stylebox.bg_color=Color(0.0, 0.0, 0.0, 0.0)
+	mouse_enter.emit(false,false)
+	stop_highlight()

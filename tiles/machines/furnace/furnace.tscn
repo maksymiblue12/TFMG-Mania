@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://4ocdayfrv7vh"]
 
 [ext_resource type="Script" uid="uid://b1hiaiuex2kk4" path="res://tiles/machines/furnace/furnace.gd" id="1_1i6bx"]
-[ext_resource type="Texture2D" uid="uid://e17vsia1d8gj" path="res://assets/furnace.png" id="1_kbsf7"]
+[ext_resource type="Texture2D" uid="uid://e17vsia1d8gj" path="res://assets/textures/buildings/furnace.png" id="1_kbsf7"]
 
 [node name="Furnace" type="Node2D" unique_id=532590499]
 script = ExtResource("1_1i6bx")

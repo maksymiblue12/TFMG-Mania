@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e17vsia1d8gj"
-path="res://.godot/imported/furnace.png-54ddd48ded36677a685e662fa9ee9fdc.ctex"
+uid="uid://dbl60y6886tlc"
+path="res://.godot/imported/belt.png-66b0d46547aeb880ed6e5c3b10ebc778.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/furnace.png"
-dest_files=["res://.godot/imported/furnace.png-54ddd48ded36677a685e662fa9ee9fdc.ctex"]
+source_file="res://assets/textures/buildings/belt.png"
+dest_files=["res://.godot/imported/belt.png-66b0d46547aeb880ed6e5c3b10ebc778.ctex"]
 
 [params]
 

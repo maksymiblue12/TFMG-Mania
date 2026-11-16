@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b475w2vntlm8e"]
 
-[ext_resource type="Texture2D" uid="uid://cl0cfvripa8yv" path="res://assets/belt_splitter.png" id="1_itpua"]
+[ext_resource type="Texture2D" uid="uid://cl0cfvripa8yv" path="res://assets/textures/buildings/belt_splitter.png" id="1_itpua"]
 [ext_resource type="Script" uid="uid://b0auydybyk7ai" path="res://tiles/belts/belt_splitter/belt_splitter.gd" id="1_r7jhj"]
 
 [node name="BeltSplitter" type="Node2D" unique_id=1069482665]

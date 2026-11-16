@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://351nhbs51s31"
-path="res://.godot/imported/belt_frog.png-12e0d932300d1966ae9b78670b641f17.ctex"
+uid="uid://cvqrfsjd1fgws"
+path="res://.godot/imported/incinerator.png-41b31914f8953c2c6cf2e01f9d8213ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/belt_frog.png"
-dest_files=["res://.godot/imported/belt_frog.png-12e0d932300d1966ae9b78670b641f17.ctex"]
+source_file="res://assets/textures/buildings/incinerator.png"
+dest_files=["res://.godot/imported/incinerator.png-41b31914f8953c2c6cf2e01f9d8213ed.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cv4q55vx2spaw"]
 
 [ext_resource type="Script" uid="uid://deju44h6eonwt" path="res://systems/belt_path/belt_item.gd" id="1_ej1mx"]
-[ext_resource type="Texture2D" uid="uid://bgxn2y2aebelg" path="res://assets/iron.png" id="2_pbpmj"]
+[ext_resource type="Texture2D" uid="uid://bgxn2y2aebelg" path="res://assets/textures/items/iron.png" id="2_pbpmj"]
 
 [node name="BeltItem" type="Node2D" unique_id=21111882]
 z_index = 1
@@ -22,5 +22,5 @@ grow_vertical = 2
 color = Color(1, 0.75, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2117800203]
-scale = Vector2(0.02, 0.02)
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_pbpmj")

@@ -1,12 +1,6 @@
 class_name BaseMultiTileBuilding
 extends Building
 
-@onready var sprite:Sprite2D=$Sprite2D
-
-var scene:PackedScene
-var components:PackedStringArray=PackedStringArray()
-
-var square:Square
 var size:Vector2
 var special_tiles:Dictionary
 var controller_position:Vector2=Vector2(0,0)
@@ -14,9 +8,11 @@ var controller_position:Vector2=Vector2(0,0)
 var special_tile_lookup:Dictionary={}
 
 func _init() -> void:
+	super._init()
 	components.append("multitile")
 
 func _ready() -> void:
+	super._ready()
 	var special={}
 	for k in special_tiles.keys():
 		var v=special_tiles[k]
@@ -30,7 +26,7 @@ func _ready() -> void:
 			if (offset==Vector2.ZERO): continue
 			sq=square.get_square_relative(offset)
 			if (!sq): continue
-			var t=ItemBlackHole.new().get_copy()
+			var t=MultiTileEmpty.new().get_copy()
 			if (Vector2(x,y) in special):
 				var dt=special[Vector2(x,y)]
 				if (dt["type"]=="input"):
@@ -39,18 +35,6 @@ func _ready() -> void:
 				elif (dt["type"]=="output"):
 					t=MultiTileOutput.new().get_copy()
 					special_tile_lookup[dt["name"]]=t
+			t.controller=self
+			t.dir=dir
 			sq.set_tile(t)
-
-func has_component(c:String):
-	return components.has(c)
-
-func copy_to(tile):
-	tile.size=size
-
-func get_copy():
-	var b=scene.instantiate()
-	copy_to(b)
-	return b
-
-func _process(_delta: float) -> void:
-	pass

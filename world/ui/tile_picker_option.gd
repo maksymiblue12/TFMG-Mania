@@ -10,8 +10,6 @@ extends VBoxContainer
 
 var ui:UI
 
-var has_mouse:bool=false
-
 func _ready() -> void:
 	sprite.texture=texture
 
@@ -27,5 +25,4 @@ func _input(event: InputEvent) -> void:
 			anim_player.play("click_tile_picker_option")
 
 func _on_mouse_entered() -> void:
-	has_mouse=true
 	anim_player.play("hover_over_tile_picker_option")

@@ -26,4 +26,16 @@ var NEXT_DIRECTION={
 	DIRECTION.DOWN:DIRECTION.LEFT
 }
 
-enum ITEM_TYPE {NONE,iron}
+enum ITEM_TYPE {NONE,iron,coal}
+var STRING_TO_ITEM_TYPE={
+	"none":ITEM_TYPE.NONE,
+	"iron":ITEM_TYPE.iron,
+	"coal":ITEM_TYPE.coal,
+}
+var ITEM_TYPE_TO_TEXTURE={
+	ITEM_TYPE.NONE:preload("res://assets/textures/items/none.png"),
+	ITEM_TYPE.iron:preload("res://assets/textures/items/iron.png"),
+	ITEM_TYPE.coal:preload("res://assets/textures/items/none.png"),
+}
+
+enum TOOL_TYPE {interact,place}

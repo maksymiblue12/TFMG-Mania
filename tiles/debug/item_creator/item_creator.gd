@@ -1,12 +1,17 @@
 class_name ItemCreator
 extends BaseBuilding
 
+var SCREEN=preload("res://tiles/debug/item_creator/item_creator_screen.tscn")
+
 func _init() -> void:
 	super._init()
 	scene=preload("res://tiles/debug/item_creator/item_creator.tscn")
 	components.append("debug")
 	components.append("item_creator")
 	rotatable=false
+
+func on_interact():
+	GameState.ui.show_screen(SCREEN)
 
 func _on_timer_timeout():
 	for i in GameConstants.DIRECTION.values():

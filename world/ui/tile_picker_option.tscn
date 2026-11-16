@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://pg1it2cub0j8"]
 
 [ext_resource type="Script" uid="uid://sm3dcqjmxwjg" path="res://world/ui/tile_picker_option.gd" id="1_dlves"]
-[ext_resource type="Texture2D" uid="uid://dbl60y6886tlc" path="res://assets/belt.png" id="1_lsqnp"]
+[ext_resource type="Texture2D" uid="uid://dbl60y6886tlc" path="res://assets/textures/buildings/belt.png" id="1_lsqnp"]
 
 [sub_resource type="Animation" id="Animation_dlves"]
 length = 0.001

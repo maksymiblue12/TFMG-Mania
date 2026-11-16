@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://hp0ea4cuejp6"]
+
+[ext_resource type="Script" uid="uid://crtt8qn7j6g5c" path="res://world/ui/tool_picker_option.gd" id="1_ecedr"]
+
+[node name="ToolPickerOption" type="Button" unique_id=1800087442]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_right = 8.0
+offset_bottom = 4.0
+grow_vertical = 2
+size_flags_horizontal = 0
+text = "Tool Name"
+script = ExtResource("1_ecedr")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

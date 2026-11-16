@@ -3,8 +3,11 @@ extends Node
 signal rotated_tile_to_place
 
 var belt_manager:BeltManager
+var recipe_manager:RecipeManager=RecipeManager.new()
 
 var tile_to_place:Building=Furnace.new()
+
+var tool:GameConstants.TOOL_TYPE=GameConstants.TOOL_TYPE.interact
 
 func _ready() -> void:
 	belt_manager=get_tree().root.get_node("/root/world/BeltManager")
