@@ -24,8 +24,12 @@ func create(_grid,x,y,_grid_id):
 	var s=($Panel.get_theme_stylebox("panel") as StyleBoxFlat).duplicate()
 	if (x_index==0):
 		s.border_width_left=4
+	elif (x_index==grid.grids[grid_id]["size"].x-1):
+		s.border_width_right=4
 	if (y_index==0):
 		s.border_width_top=4
+	elif (y_index==grid.grids[grid_id]["size"].y-1):
+		s.border_width_bottom=4
 	$Panel.add_theme_stylebox_override("panel",s)
 	stylebox=s
 

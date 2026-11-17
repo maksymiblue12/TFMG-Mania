@@ -4,8 +4,10 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pijsi"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_right = 4
-border_width_bottom = 4
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 border_color = Color(0.8, 0, 0, 1)
 
 [node name="square" type="Node2D" unique_id=1941574083]

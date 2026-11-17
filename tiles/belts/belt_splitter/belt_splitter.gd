@@ -26,10 +26,11 @@ func _ready() -> void:
 
 func on_interact():
 	var s=SCREEN.instantiate()
-	s.load_data("any","any","any",self.on_close_screen)
+	s.load_data(filter_dirs[0],filter_dirs[1],filter_dirs[2],self.on_close_screen)
 	GameState.ui.show_screen(s)
 
 func on_close_screen(new_item_type_1,new_item_type_2,new_item_type_3):
+	filter_dirs=[new_item_type_1,new_item_type_2,new_item_type_3]
 	GameState.ui.hide_screen()
 
 func on_item_accepted():
@@ -37,12 +38,8 @@ func on_item_accepted():
 		pop_accepted_item()
 
 func get_ejector_direction():
-	if (current_dir==GameConstants.OPPOSITE_DIRECTION[dir]):
-		next_direction()
-	return current_dir
-
-func on_item_ejected():
 	next_direction()
+	return current_dir
 
 func tile_can_accept(from_dir:GameConstants.DIRECTION):
 	var t=square.get_direction_neighbours()[from_dir]
@@ -52,14 +49,25 @@ func update_directions():
 	for i in GameConstants.DIRECTION.values():
 		avaiable_dirs[i]=i!=GameConstants.OPPOSITE_DIRECTION[dir] and i!=current_dir and tile_can_accept(i)
 
+func filter_avaiable_dirs(item:GameConstants.ITEM_TYPE):
+	var correct=["any",GameConstants.STRING_TO_ITEM_TYPE.find_key(item)]
+	print(correct)
+	var res=avaiable_dirs.duplicate()
+	res[GameConstants.PREVIOUS_DIRECTION[dir]]=filter_dirs[GameConstants.PREVIOUS_DIRECTION[dir]] in correct
+	res[dir]=filter_dirs[dir] in correct
+	res[GameConstants.NEXT_DIRECTION[dir]]=filter_dirs[GameConstants.NEXT_DIRECTION[dir]] in correct
+	return res
+
 func next_direction():
 	update_directions()
 	if (avaiable_dirs.all(func (a):return !a)):
 		current_dir=GameConstants.OPPOSITE_DIRECTION[dir]
 		ejector_active=false
 		return
+	var a_dirs=filter_avaiable_dirs(item_to_eject)
 	current_dir=GameConstants.NEXT_DIRECTION[current_dir]
-	while (!avaiable_dirs[current_dir]):
+	print(current_dir,a_dirs)
+	while (!a_dirs[current_dir]):
 		current_dir=GameConstants.NEXT_DIRECTION[current_dir]
 	ejector_active=true
 
