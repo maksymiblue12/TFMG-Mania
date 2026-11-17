@@ -51,7 +51,6 @@ func update_directions():
 
 func filter_avaiable_dirs(item:GameConstants.ITEM_TYPE):
 	var correct=["any",GameConstants.STRING_TO_ITEM_TYPE.find_key(item)]
-	print(correct)
 	var res=avaiable_dirs.duplicate()
 	res[GameConstants.PREVIOUS_DIRECTION[dir]]=filter_dirs[GameConstants.PREVIOUS_DIRECTION[dir]] in correct
 	res[dir]=filter_dirs[dir] in correct
@@ -66,7 +65,6 @@ func next_direction():
 		return
 	var a_dirs=filter_avaiable_dirs(item_to_eject)
 	current_dir=GameConstants.NEXT_DIRECTION[current_dir]
-	print(current_dir,a_dirs)
 	while (!a_dirs[current_dir]):
 		current_dir=GameConstants.NEXT_DIRECTION[current_dir]
 	ejector_active=true
