@@ -9,4 +9,4 @@ func _ready() -> void:
 
 func _on_pressed() -> void:
 	if (GameState.showing_screen): return
-	GameState.tool=tool_type
+	GameState.set_tool(tool_type)

@@ -20,6 +20,10 @@ func _input(event: InputEvent) -> void:
 		else:
 			anim_player.play("tile_picker_open")
 
+func open_tile_picker_screen():
+	if (!tile_picker_open):
+		anim_player.play("tile_picker_open")
+
 func show_screen(screen:Control):
 	GameState.showing_screen=true
 	$MarginContainer.add_child(screen)

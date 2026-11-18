@@ -18,6 +18,11 @@ func get_placable_tile():
 func set_placable_tile(tile:PackedScene):
 	tile_to_place=tile.instantiate()
 
+func set_tool(tool_type:GameConstants.TOOL_TYPE):
+	if (tool_type==GameConstants.TOOL_TYPE.place):
+		ui.toggle_tile_picker_screen(true)
+	tool=tool_type
+
 func _input(event: InputEvent) -> void:
 	if (showing_screen): return
 	if (event.is_action_pressed("rotate_building")):
