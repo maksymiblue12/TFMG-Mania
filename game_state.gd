@@ -19,8 +19,7 @@ func set_placable_tile(tile:PackedScene):
 	tile_to_place=tile.instantiate()
 
 func set_tool(tool_type:GameConstants.TOOL_TYPE):
-	if (tool_type==GameConstants.TOOL_TYPE.place):
-		ui.toggle_tile_picker_screen(true)
+	ui.toggle_tile_picker_screen(tool_type==GameConstants.TOOL_TYPE.place,true)
 	tool=tool_type
 
 func _input(event: InputEvent) -> void:

@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://bmh8leb1yew2w"]
+
+[ext_resource type="Texture2D" uid="uid://bgxn2y2aebelg" path="res://assets/textures/items/iron.png" id="1_8yvni"]
+[ext_resource type="Script" uid="uid://c0cstaif25m7t" path="res://tiles/machines/furnace/furnace_screen.gd" id="1_dw1e4"]
+[ext_resource type="Texture2D" uid="uid://chnwlyc8xk31m" path="res://assets/textures/items/coal.png" id="2_vsqmf"]
+[ext_resource type="Texture2D" uid="uid://yxkowdn1hdxc" path="res://assets/textures/items/none.png" id="3_vsqmf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2477"]
+bg_color = Color(0.15294118, 0.15294118, 0.15294118, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vsqmf"]
+bg_color = Color(0.22670749, 0.22670752, 0.2267074, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dw1e4"]
+bg_color = Color(0.5924477, 8.904189e-07, 3.85046e-07, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="FurnaceScreen" type="Control" unique_id=700267631]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dw1e4")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1437976759]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=119860719]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v2477")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel" unique_id=1156633656]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=424781935]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1859002426]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+selected = 0
+item_count = 1
+popup/item_0/text = "hello"
+popup/item_0/id = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1927220153]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/MarginContainer" unique_id=207692771]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Item" type="TextureRect" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=2075294967]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+offset_transform_scale = Vector2(2, 2)
+offset_transform_visual_only = false
+texture = ExtResource("1_8yvni")
+
+[node name="VSeparator" type="VSeparator" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=576782686]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Fuel" type="TextureRect" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=324822183]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+offset_transform_scale = Vector2(2, 2)
+offset_transform_visual_only = false
+texture = ExtResource("2_vsqmf")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=494088483]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer" unique_id=1838214667]
+layout_mode = 2
+alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1707566237]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_vsqmf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dw1e4")
+value = 20.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer" unique_id=1497896499]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer2" unique_id=1842841869]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "No recipe active"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1895681338]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="Output" type="TextureRect" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=549208371]
+layout_mode = 2
+size_flags_vertical = 4
+offset_transform_enabled = true
+offset_transform_scale = Vector2(2, 2)
+offset_transform_visual_only = false
+texture = ExtResource("3_vsqmf")
+
+[node name="Button" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=699500033]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "ok"
+
+[connection signal="pressed" from="CenterContainer/Panel/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

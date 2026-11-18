@@ -13,6 +13,9 @@ func _ready() -> void:
 	super._ready()
 	square.mouse_enter.connect(self.on_mouse_enter)
 
+func on_interact():
+	controller.on_interact()
+
 func on_mouse_enter(enter:bool,interaction:bool):
 	if (!enter):
 		controller.square.stop_highlight()

@@ -15,14 +15,15 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if (event.is_action_pressed("open_tile_picker")):
 		if (anim_player.is_playing()): return
-		if (tile_picker_open):
-			anim_player.play("tile_picker_close")
-		else:
-			anim_player.play("tile_picker_open")
+		toggle_tile_picker_screen(!tile_picker_open)
 
-func open_tile_picker_screen():
-	if (!tile_picker_open):
+func toggle_tile_picker_screen(open:bool,check:bool=false):
+	if (open):
+		if (check and tile_picker_open): return
 		anim_player.play("tile_picker_open")
+	else:
+		if (check and !tile_picker_open): return
+		anim_player.play("tile_picker_close")
 
 func show_screen(screen:Control):
 	GameState.showing_screen=true
