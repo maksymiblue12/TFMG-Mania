@@ -13,9 +13,9 @@ var distance_to_first:float=0.0
 var items:Array[BeltItem]=[]
 var wants_to_push:bool=false
 
-var length:float=0
+var length:float=0.0
 var speed:float=100.0
-var item_spacing:float=30
+var item_spacing:float=30.0
 
 func _ready() -> void:
 	curve=Curve2D.new()
@@ -31,6 +31,7 @@ func add_belt(belt:BasicBelt):
 		segments[-1].disable_ejector()
 		belt.disable_acceptor()
 	segments.append(belt)
+	belt.calculate_animation_speed(speed)
 	for i in belt.get_points_for_path():
 		curve.add_point(i)
 	length=curve.get_baked_length()
@@ -39,6 +40,7 @@ func add_belt_before(belt:BasicBelt):
 	belt.belt_path=self
 	if (!segments.is_empty()): segments[0].acceptor_active=false
 	segments.insert(0,belt)
+	belt.calculate_animation_speed(speed)
 	var old_l=length
 	var p=belt.get_points_for_path()
 	p.reverse()
@@ -78,6 +80,11 @@ func on_ejected_item():
 	var it=items.pop_front()
 	it.queue_free()
 	wants_to_push=false
+
+func set_speed(new_speed:float):
+	speed=new_speed
+	for s in segments:
+		s.calculate_animation_speed(speed)
 
 func _process(delta: float) -> void:
 	if (items.is_empty()): return

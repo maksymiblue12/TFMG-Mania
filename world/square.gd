@@ -1,7 +1,7 @@
 class_name Square
 extends Node2D
 
-@onready var panel=$Panel
+@onready var panel:Panel=$Panel
 
 signal mouse_enter(enter:bool,interact:bool)
 
@@ -17,20 +17,17 @@ var has_tile:bool=false
 var tile
 
 func create(_grid,x,y,_grid_id):
+	panel.size=GameConstants.SQUARE_SIZE
 	grid=_grid
 	x_index=x
 	y_index=y
 	grid_id=_grid_id
-	var s=($Panel.get_theme_stylebox("panel") as StyleBoxFlat).duplicate()
-	if (x_index==0):
-		s.border_width_left=4
-	elif (x_index==grid.grids[grid_id]["size"].x-1):
-		s.border_width_right=4
-	if (y_index==0):
-		s.border_width_top=4
-	elif (y_index==grid.grids[grid_id]["size"].y-1):
-		s.border_width_bottom=4
-	$Panel.add_theme_stylebox_override("panel",s)
+	var s=(panel.get_theme_stylebox("panel") as StyleBoxFlat).duplicate()
+	s.border_width_left=(4.0 if x_index==0 else 2.0)/60.0*GameConstants.SQUARE_SIZE.x
+	s.border_width_right=(4.0 if x_index==grid.grids[grid_id]["size"].x-1 else 2.0)/60.0*GameConstants.SQUARE_SIZE.x
+	s.border_width_top=(4.0 if y_index==0 else 2.0)/60.0*GameConstants.SQUARE_SIZE.x
+	s.border_width_bottom=(4.0 if y_index==grid.grids[grid_id]["size"].y-1 else 2.0)/60.0*GameConstants.SQUARE_SIZE.x
+	panel.add_theme_stylebox_override("panel",s)
 	stylebox=s
 
 func get_neighbours():

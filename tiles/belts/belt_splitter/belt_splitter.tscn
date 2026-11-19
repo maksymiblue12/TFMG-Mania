@@ -8,4 +8,3 @@ script = ExtResource("1_r7jhj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=481997967]
 texture = ExtResource("1_itpua")
-offset = Vector2(30, 30)

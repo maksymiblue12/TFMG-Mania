@@ -51,7 +51,7 @@ func get_points_for_path():
 func _ready() -> void:
 	super._ready()
 	GameState.belt_manager.on_belt_corner_added(self)
-	$Sprite2D.flip_v=!flipped
+	sprite.flip_v=!flipped
 	block_all_acceptor_directions()
 	blocked_acceptor_directions[get_starting_direction()]=false
 

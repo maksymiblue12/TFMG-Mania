@@ -43,7 +43,7 @@ func get_ejector_direction():
 
 func tile_can_accept(from_dir:GameConstants.DIRECTION):
 	var t=square.get_direction_neighbours()[from_dir]
-	return t and t.has_tile and t.tile.has_component("item_acceptor") and t.tile.could_accept_item(from_dir)
+	return t and t.has_tile and t.tile.has_component("item_acceptor") and t.tile.could_accept_item(GameConstants.ITEM_TYPE.NONE,from_dir)
 
 func update_directions():
 	for i in GameConstants.DIRECTION.values():

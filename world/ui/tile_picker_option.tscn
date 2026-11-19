@@ -93,6 +93,8 @@ script = ExtResource("1_dlves")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2064562833]
 texture_filter = 1
+custom_minimum_size = Vector2(60, 60)
+custom_maximum_size = Vector2(60, 60)
 layout_mode = 2
 offset_transform_enabled = true
 texture = ExtResource("1_lsqnp")

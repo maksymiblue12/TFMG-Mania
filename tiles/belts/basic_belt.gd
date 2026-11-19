@@ -11,6 +11,10 @@ func _ready() -> void:
 	super._ready()
 	blocked_acceptor_directions[get_direction()]=true
 
+func calculate_animation_speed(item_speed:float):
+	var anim_speed:float=item_speed/sprite.texture.get_size().y
+	(sprite.material as ShaderMaterial).set_shader_parameter("speed",anim_speed)
+
 func get_points_for_path():
 	assert(false,"Not Implemented")
 

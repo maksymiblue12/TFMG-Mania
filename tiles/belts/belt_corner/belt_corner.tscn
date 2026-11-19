@@ -7,12 +7,12 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_htjah"]
 shader = ExtResource("2_5swj6")
 shader_parameter/speed = 1.60000002384192
+shader_parameter/border_size = 13
+shader_parameter/flip_y = false
 
 [node name="BeltCorner" type="Node2D" unique_id=1013864991]
 script = ExtResource("1_b830j")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1817621761]
-texture_filter = 1
 material = SubResource("ShaderMaterial_htjah")
-position = Vector2(30, 30)
 texture = ExtResource("3_qabn8")

@@ -24,6 +24,7 @@ func rotate_tile():
 	dir=GameConstants.NEXT_DIRECTION[dir]
 
 func update_sprite_direction():
+	sprite.position=GameConstants.SQUARE_SIZE/2
 	sprite.rotation_degrees=GameConstants.DIRECTION_TO_ROTATION[dir]
 
 func on_interact():

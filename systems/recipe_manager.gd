@@ -10,7 +10,7 @@ func _init() -> void:
 
 func load_recipe_file(text:String):
 	# TODO: check if exists and check for errors
-	return JSON.new().parse_string(text)
+	return JSON.parse_string(text)
 
 func load_category(path:String,category:String):
 	recipes[category]=[]

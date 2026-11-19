@@ -6,7 +6,7 @@ var belt_manager:BeltManager
 var ui:UI
 var recipe_manager:RecipeManager=RecipeManager.new()
 
-var tile_to_place:Building=BeltSplitter.new()
+var tile_to_place:Building=Belt.new()
 
 var tool:GameConstants.TOOL_TYPE=GameConstants.TOOL_TYPE.place
 
