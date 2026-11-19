@@ -20,7 +20,7 @@ func pop_accepted_item():
 	accepted_item=GameConstants.ITEM_TYPE.NONE
 	return t
 
-func can_accept_item(_from_dir:GameConstants.DIRECTION):
+func can_accept_item(_item_type:GameConstants.ITEM_TYPE,_from_dir:GameConstants.DIRECTION):
 	return true
 
 func block_all_acceptor_directions():
@@ -33,12 +33,12 @@ func disable_acceptor():
 func has_accepted_item():
 	return accepted_item!=GameConstants.ITEM_TYPE.NONE
 
-func could_accept_item(from_dir:GameConstants.DIRECTION):
-	return acceptor_active and !blocked_acceptor_directions[GameConstants.OPPOSITE_DIRECTION[from_dir]] and can_accept_item(from_dir) and !has_accepted_item()
+func could_accept_item(item_type:GameConstants.ITEM_TYPE,from_dir:GameConstants.DIRECTION):
+	return acceptor_active and !blocked_acceptor_directions[GameConstants.OPPOSITE_DIRECTION[from_dir]] and !has_accepted_item() and can_accept_item(item_type,from_dir)
 
 func try_accept_item(item_type:GameConstants.ITEM_TYPE,from_dir:GameConstants.DIRECTION):
 	if (!acceptor_active or blocked_acceptor_directions[GameConstants.OPPOSITE_DIRECTION[from_dir]]): return false
-	if (!can_accept_item(from_dir)): return false
+	if (!can_accept_item(item_type,from_dir)): return false
 	if (!has_accepted_item()):
 		accepted_item=item_type
 		on_item_accepted()

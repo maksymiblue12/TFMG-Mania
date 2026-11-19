@@ -14,7 +14,7 @@ func _ready() -> void:
 func get_points_for_path():
 	assert(false,"Not Implemented")
 
-func can_accept_item(_from_dir:GameConstants.DIRECTION):
+func can_accept_item(_item_type:GameConstants.ITEM_TYPE,_from_dir:GameConstants.DIRECTION):
 	return belt_path.can_add_item()
 
 func on_item_accepted():

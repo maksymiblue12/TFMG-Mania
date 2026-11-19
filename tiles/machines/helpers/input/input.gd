@@ -2,6 +2,7 @@ class_name MultiTileInput
 extends ItemAcceptor
 
 var controller:BaseMultiTileBuilding
+var special_name:String
 
 func _init() -> void:
 	super._init()
@@ -14,6 +15,9 @@ func _ready() -> void:
 
 func on_interact():
 	controller.on_interact()
+
+func can_accept_item(item_type:GameConstants.ITEM_TYPE,from_dir:GameConstants.DIRECTION):
+	return controller.can_accept_item(special_name,item_type,from_dir)
 
 func on_mouse_enter(enter:bool,interaction:bool):
 	if (!enter):

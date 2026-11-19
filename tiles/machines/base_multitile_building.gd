@@ -11,6 +11,8 @@ func _init() -> void:
 	super._init()
 	components.append("multitile")
 
+func can_accept_item(_tile_name:String,_item_type:GameConstants.ITEM_TYPE,_from_dir:GameConstants.DIRECTION):
+	return true
 
 func _ready() -> void:
 	super._ready()
@@ -36,6 +38,7 @@ func _ready() -> void:
 				elif (dt["type"]=="output"):
 					t=MultiTileOutput.new().get_copy()
 					special_tile_lookup[dt["name"]]=t
+				t.special_name=dt["name"]
 			t.controller=self
 			t.dir=dir
 			sq.set_tile(t)

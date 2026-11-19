@@ -2,6 +2,7 @@ class_name MultiTileOutput
 extends ItemEjector
 
 var controller:BaseMultiTileBuilding
+var special_name:String
 
 func _init() -> void:
 	super._init()

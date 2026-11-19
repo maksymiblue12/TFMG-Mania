@@ -130,6 +130,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer2" unique_id=1842841869]
+visible = false
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "No recipe active"

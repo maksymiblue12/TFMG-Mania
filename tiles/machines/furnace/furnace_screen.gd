@@ -7,15 +7,23 @@ extends Control
 @onready var progress_bar:ProgressBar=$CenterContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/ProgressBar
 @onready var no_recipe_label:Label=$CenterContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer2/Label
 
+var input_item:GameConstants.ITEM_TYPE
+var fuel_item:GameConstants.ITEM_TYPE
+var output_item:GameConstants.ITEM_TYPE
 var timer:Timer
 var end_function:Callable
 
-func load_data(_timer:Timer,_end_function:Callable):
+func load_data(i:GameConstants.ITEM_TYPE,f:GameConstants.ITEM_TYPE,o:GameConstants.ITEM_TYPE,_timer:Timer,_end_function:Callable):
+	input_item=i
+	fuel_item=f
+	output_item=o
 	timer=_timer
 	end_function=_end_function
 
 func _ready() -> void:
-	pass
+	item.texture=GameConstants.ITEM_TYPE_TO_TEXTURE[input_item]
+	fuel.texture=GameConstants.ITEM_TYPE_TO_TEXTURE[fuel_item]
+	output.texture=GameConstants.ITEM_TYPE_TO_TEXTURE[output_item]
 
 func _process(_delta: float) -> void:
 	if (timer.is_stopped()):

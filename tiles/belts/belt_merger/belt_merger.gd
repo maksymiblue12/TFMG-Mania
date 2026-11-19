@@ -13,7 +13,7 @@ func _ready() -> void:
 	super._ready()
 	next_direction()
 
-func can_accept_item(from_dir:GameConstants.DIRECTION):
+func can_accept_item(_item_type:GameConstants.ITEM_TYPE,from_dir:GameConstants.DIRECTION):
 	if (current_dir==dir):
 		next_direction()
 	return current_dir==GameConstants.OPPOSITE_DIRECTION[from_dir]
