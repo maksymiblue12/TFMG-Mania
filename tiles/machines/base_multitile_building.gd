@@ -16,6 +16,7 @@ func can_accept_item(_tile_name:String,_item_type:GameConstants.ITEM_TYPE,_from_
 
 func _ready() -> void:
 	super._ready()
+	sprite.position=size*GameConstants.SQUARE_SIZE/2
 	var special={}
 	for k in special_tiles.keys():
 		var v=special_tiles[k]

@@ -13,7 +13,7 @@ config_version=5
 config/name="TFMG-Mania"
 run/main_scene="uid://bqykhjxijg8fg"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://b1cvtqwipm83t"
 
 [autoload]
 

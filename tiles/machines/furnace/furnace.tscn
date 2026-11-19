@@ -8,7 +8,6 @@ script = ExtResource("1_1i6bx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=931130675]
 texture = ExtResource("1_kbsf7")
-centered = false
 
 [node name="Timer" type="Timer" parent="." unique_id=1980401067]
 one_shot = true
