@@ -56,6 +56,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			set_tile(GameState.get_placable_tile())
 		elif (has_tile and GameState.tool==GameConstants.TOOL_TYPE.interact):
 			tile.on_interact()
+		elif (has_tile and GameState.tool==GameConstants.TOOL_TYPE.destroy):
+			tile.destroy()
+			has_tile=false
 
 func set_tile(_tile:Node2D,reparent_instead:bool=false):
 	has_tile=true
@@ -80,7 +83,7 @@ func stop_highlight():
 func _on_mouse_entered() -> void:
 	if (has_mouse):return
 	has_mouse=true
-	if (GameState.tool==GameConstants.TOOL_TYPE.interact):
+	if (GameState.tool==GameConstants.TOOL_TYPE.interact or GameState.tool==GameConstants.TOOL_TYPE.destroy):
 		if (has_tile):
 			mouse_enter.emit(true,true)
 			highlight(true)

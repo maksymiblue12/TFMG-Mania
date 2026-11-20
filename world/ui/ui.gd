@@ -13,9 +13,7 @@ func _ready() -> void:
 	GameState.ui=self
 
 func _input(event: InputEvent) -> void:
-	if (event.is_action_pressed("open_tile_picker")):
-		if (anim_player.is_playing()): return
-		toggle_tile_picker_screen(!tile_picker_open)
+	pass
 
 func toggle_tile_picker_screen(open:bool,check:bool=false):
 	if (open):

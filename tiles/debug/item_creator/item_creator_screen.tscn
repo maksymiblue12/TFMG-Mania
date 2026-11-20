@@ -59,12 +59,6 @@ alignment = 1
 [node name="OptionButton" type="OptionButton" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=199424588]
 layout_mode = 2
 size_flags_vertical = 4
-selected = 0
-item_count = 2
-popup/item_0/text = "iron"
-popup/item_0/id = 0
-popup/item_1/text = "coal"
-popup/item_1/id = 1
 
 [node name="VSeparator" type="VSeparator" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=634721160]
 custom_minimum_size = Vector2(50, 0)

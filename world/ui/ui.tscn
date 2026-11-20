@@ -284,5 +284,10 @@ layout_mode = 2
 tool_name = "Place"
 tool_type = 1
 
+[node name="ToolPickerOption3" parent="MarginContainer/Tools" unique_id=1315762487 instance=ExtResource("18_sjk6q")]
+layout_mode = 2
+tool_name = "Destroy"
+tool_type = 2
+
 [editable path="MarginContainer/HBoxContainer/Panel/MarginContainer/TabContainer/Belt/VBoxContainer/TilePickerOption2"]
 [editable path="MarginContainer/HBoxContainer/Panel/MarginContainer/TabContainer/Belt/VBoxContainer/TilePickerOption7"]

@@ -41,5 +41,8 @@ func get_copy():
 	copy_to(b)
 	return b
 
+func destroy():
+	queue_free()
+
 func _process(_delta: float) -> void:
 	pass

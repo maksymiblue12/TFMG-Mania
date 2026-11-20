@@ -55,6 +55,7 @@ func new_belt_path(belt:BasicBelt):
 	p.add_belt(belt)
 	p._id=current_id
 	current_id+=1
+	return p
 
 func remove_path(path:BeltPath):
 	belt_paths.remove_at(belt_paths.find(path))

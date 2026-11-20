@@ -1,5 +1,7 @@
 {
-	"input":"iron",
+	"name":"Iron",
+	"input":"raw_iron",
 	"fuel":"coal",
-	"output":"iron"
+	"output":"iron",
+	"time":0.5
 }

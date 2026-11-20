@@ -9,7 +9,6 @@ var curve:Curve2D
 
 var segments:Array[BasicBelt]=[]
 
-var distance_to_first:float=0.0
 var items:Array[BeltItem]=[]
 var wants_to_push:bool=false
 
@@ -31,21 +30,30 @@ func add_belt(belt:BasicBelt):
 		segments[-1].disable_ejector()
 		belt.disable_acceptor()
 	segments.append(belt)
+	belt.start_curve_index=curve.point_count
 	belt.calculate_animation_speed(speed)
 	for i in belt.get_points_for_path():
 		curve.add_point(i)
+	belt.end_curve_index=curve.point_count
 	length=curve.get_baked_length()
 
 func add_belt_before(belt:BasicBelt):
 	belt.belt_path=self
 	if (!segments.is_empty()): segments[0].acceptor_active=false
 	segments.insert(0,belt)
+	belt.start_curve_index=0
 	belt.calculate_animation_speed(speed)
 	var old_l=length
 	var p=belt.get_points_for_path()
 	p.reverse()
+	var j=0
 	for i in p:
+		j+=1
 		curve.add_point(i,Vector2.ZERO,Vector2.ZERO,0)
+	belt.start_curve_index=j
+	for b in segments.slice(1):
+		b.start_curve_index+=j
+		b.end_curve_index+=j
 	length=curve.get_baked_length()
 	var l_diff=length-old_l
 	for i in items:
@@ -60,6 +68,32 @@ func merge(other:BeltPath):
 		i.offset+=length
 	items=other.items+items
 	GameState.belt_manager.remove_path(other)
+
+func split(belt:BasicBelt):
+	var i=segments.find(belt)
+	var front=segments.slice(i+1)
+	var back=segments.slice(0,i)
+
+	var front_items:Array[BeltItem]=[]
+	var back_items:Array[BeltItem]=[]
+	var s=curve.get_closest_offset(curve.get_point_position(belt.start_curve_index))
+	var e=curve.get_closest_offset(curve.get_point_position(belt.end_curve_index))
+	for it in items:
+		if (it.offset<s):
+			back_items.append(it)
+		elif (it.offset>e):
+			it.offset-=e
+			front_items.append(it)
+
+	var front_path=GameState.belt_manager.new_belt_path(front[0])
+	var back_path=GameState.belt_manager.new_belt_path(back[0])
+	for j in range(1,front.size()):
+		front_path.add_belt(front[j])
+	for j in range(1,back.size()):
+		back_path.add_belt(back[j])
+	front_path.items=front_items
+	back_path.items=back_items
+	GameState.belt_manager.remove_path(self)
 
 func add_item(item_type:GameConstants.ITEM_TYPE):
 	var item:BeltItem=BELT_ITEM.instantiate()

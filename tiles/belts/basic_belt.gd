@@ -2,6 +2,8 @@ class_name BasicBelt
 extends ItemInterface
 
 var belt_path:BeltPath
+var start_curve_index:int=0
+var end_curve_index:int=0
 
 func _init() -> void:
 	super._init()
@@ -30,3 +32,7 @@ func on_item_ejected():
 func copy_to(tile):
 	super.copy_to(tile)
 	tile.belt_path=belt_path
+
+func destroy():
+	super.destroy()
+	belt_path.split(self)

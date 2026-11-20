@@ -6,11 +6,17 @@ var belt_manager:BeltManager
 var ui:UI
 var recipe_manager:RecipeManager=RecipeManager.new()
 
-var tile_to_place:Building=Belt.new()
+var tile_to_place:Building
 
-var tool:GameConstants.TOOL_TYPE=GameConstants.TOOL_TYPE.place
+var tool:GameConstants.TOOL_TYPE
 
 var showing_screen:bool=false
+
+
+
+func init_state() -> void:
+	set_placable_tile(load("res://tiles/belts/belt/belt.tscn"))
+	set_tool(GameConstants.TOOL_TYPE.place)
 
 func get_placable_tile():
 	return tile_to_place.get_copy()

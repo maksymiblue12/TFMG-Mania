@@ -14,6 +14,8 @@ func load_data(_item_type:GameConstants.ITEM_TYPE,_f:float,_end_function:Callabl
 	end_function=_end_function
 
 func _ready() -> void:
+	for k in GameConstants.ITEM_TYPE_TO_ID:
+		item_option.add_item(GameConstants.STRING_TO_ITEM_TYPE.find_key(k),GameConstants.ITEM_TYPE_TO_ID[k])
 	item_option.select(GameConstants.ITEM_TYPE_TO_ID[item_type])
 	frequence_option.value=frequence
 
